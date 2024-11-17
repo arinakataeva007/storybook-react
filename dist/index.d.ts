@@ -1,2 +1,4 @@
-import MyButton from "./components/MyButton/MyButton";
-export { MyButton };
+import MyButton from "./feature/MyButton/MyButton";
+import CheckBox from "./feature/MyButton/atoms/checkbox/check-box.component";
+import LabelComponent from "./feature/MyButton/atoms/checkbox/label/label.component";
+export { MyButton, CheckBox, LabelComponent };

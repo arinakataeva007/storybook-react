@@ -1,0 +1,30 @@
+@import 'light-theme';
+@import 'dark-theme';
+
+@mixin size-icon($size) {
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	width: $size;
+	height: $size;
+}
+@mixin position-absolute($top, $bottom, $right, $left, $z-index) {
+	position: absolute;
+	top: $top;
+	bottom: $bottom;
+	right: $right;
+	left: $left;
+	z-index: $z-index;
+}
+@mixin font-base($font-size, $line-height) {
+	font-family: Rubik;
+	font-size: $font-size;
+	font-style: normal;
+	font-weight: 400;
+	line-height: $line-height;
+}
+@mixin outline-style($outline, $offset, $radius) {
+	outline: $outline;
+	outline-offset: $offset;
+	border-radius: $radius;
+}

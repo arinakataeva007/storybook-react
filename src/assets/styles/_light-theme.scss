@@ -1,0 +1,102 @@
+* {
+	// brand Identica
+	--brand-brand-Background: rgba(85, 85, 103, 1);
+	--brand-brand-Red: rgba(255, 13, 56, 1);
+	--brand-brand-Orange: rgba(255, 135, 23, 1);
+	--brand-brand-Yellow: rgba(255, 214, 0, 1);
+	--brand-brand-Green: rgba(49, 226, 67, 1);
+	--brand-brand-Azure: rgba(49, 226, 184, 1);
+	--brand-brand-Light-Blue: rgba(49, 194, 226, 1);
+	--brand-brand-Blue: rgba(49, 130, 226, 1);
+	--brand-brand-Violet: rgba(212, 88, 255, 1);
+
+	// Software icons
+	--software-icons-Folder: rgba(29, 78, 136, 1);
+	--software-icons-App: rgba(29, 136, 40, 1);
+	--app: rgba(203, 45, 178, 1);
+	--software-icons-block: rgba(29, 136, 110, 1);
+	--software-icons-sfc-file: rgba(61, 0, 153, 1);
+	--software-icons-st-file: rgba(127, 53, 153, 1);
+
+	// Package
+	--package-export: rgba(230, 64, 152, 1);
+	--package-system-app: rgba(191, 79, 230, 1);
+	--package-fb-library: rgba(39, 181, 147, 1);
+	--package-system-core: rgba(141, 146, 158, 1);
+	--package-default-package: rgba(188, 194, 210, 1);
+	--package-safety-component: rgba(230, 193, 0, 1);
+
+	// Text
+	--text-text-inverse: rgba(255, 255, 255, 1);
+	--text-tertiary-text-default: rgba(188, 194, 210, 1);
+	--text-secondary-text-default: rgba(150, 155, 168, 1);
+	--secondary-text-default: rgba(141, 146, 158, 1);
+	--text-base-text-default: rgba(66, 68, 74, 1);
+
+	// Component
+	--component-component-inverse: rgba(255, 255, 255, 1);
+	--component-component-tertiary: rgba(188, 194, 210, 1);
+	--component-component-secondary: rgba(150, 155, 168, 1);
+	--component-component-base: rgba(66, 68, 74, 1);
+	--secondary-Component-default: rgba(141, 146, 158, 1);
+
+	// Backgrounds
+	--background-bg-1: rgba(248, 249, 251, 1);
+	--bg-Cool-bg-2: rgba(233, 235, 248, 1);
+	--background-bg-disabled: rgba(236, 236, 236, 1);
+	--background-bg-2: rgba(234, 236, 241, 1);
+
+	// Component State
+	--state-error: rgba(255, 13, 56, 1);
+	--state-warning: rgba(255, 135, 23, 1);
+	--state-attention: rgba(255, 214, 0, 1);
+	--state-attention-low-low-contrast: rgba(255, 251, 230, 1);
+	--state-ok: rgba(49, 226, 67, 1);
+	--state-active: rgba(49, 194, 226, 1);
+	--state-active-low-low-contrast: rgba(212, 248, 255, 1);
+	--state-connection: rgba(212, 88, 255, 1);
+	--state-disabled: rgba(191, 191, 191, 1);
+	--state-error-low-contrast: rgba(255, 231, 235, 1);
+	--state-warning-low-contrast: rgba(255, 218, 183, 1);
+	--state-attention-low-contrast: rgba(255, 242, 176, 1);
+	--state-ok-low-contrast: rgba(234, 252, 236, 1);
+	--state-active-low-contrast: rgba(156, 237, 255, 1);
+	--state-connection-low-contrast: rgba(242, 203, 255, 1);
+	--state-locked: rgba(231, 237, 252, 1);
+	--software-icons-Message-Light: rgba(37, 98, 170, 1);
+
+	// Data Types Color
+	--data-types-bool: rgba(255, 138, 189, 1);
+	--data-types-int: rgba(49, 226, 184, 1);
+	--data-types-lint: rgba(87, 244, 255, 1);
+	--data-types-lword: rgba(208, 150, 255, 1);
+	--data-types-word: rgba(255, 0, 221, 1);
+	--data-types-real: rgba(150, 192, 255, 1);
+	--data-types-string: rgba(240, 108, 0, 1);
+	--data-types-dint: rgba(100, 255, 125, 1);
+	--data-types-dword: rgba(140, 0, 255, 1);
+	--data-types-lreal: rgba(0, 101, 255, 1);
+
+	// Objects
+	--objects-breakPoint-default: rgba(255, 13, 56, 1);
+	--objects-breakPoint-hover: rgba(191, 10, 42, 1);
+	--objects-shadowDefault: rgba(37, 98, 170, 1);
+	--objects-button-default: rgba(188, 194, 210, 1);
+	--objects-button-hover: rgba(141, 146, 158, 1);
+	--state-software-assigned: rgba(39, 104, 181, 1);
+	--objects-shadow-default: rgba(188, 194, 210, 1);
+	--Text-button-primary-text: rgba(255, 255, 255, 1);
+
+	--bool-low-contrast: rgb(255, 210, 218);
+	--string-low-contrast: rgb(255, 232, 212);
+	--int-low-contrast: rgb(169, 255, 232);
+	--dint-low-contrast: rgb(197, 255, 206);
+	--lint-low-contrast: rgb(184, 250, 255);
+	--lword-low-contrast: rgb(233, 206, 255);
+	--dword-low-contrast: rgb(190, 163, 255);
+	--word-low-contrast: rgb(255, 156, 242);
+	--real-low-contrast: rgb(221, 235, 255);
+	--lreal-low-contrast: rgb(144, 188, 255);
+
+	--inactive: rgb(239, 252, 255);
+}
