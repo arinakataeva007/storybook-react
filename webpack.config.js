@@ -1,4 +1,8 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   mode: "production",
   entry: "./src/index.ts",
@@ -24,11 +28,21 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader", 
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,  // В зависимости от режима используем нужный загрузчик
           "css-loader", 
-          "sass-loader", 
+          "sass-loader",
         ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource', 
+        include: path.resolve(__dirname, 'storybook-react/src/assets')
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({ 
+      filename: '[name].css',
+    }),
+  ],
 };

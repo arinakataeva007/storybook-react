@@ -17,7 +17,7 @@
 	z-index: $z-index;
 }
 @mixin font-base($font-size, $line-height) {
-	font-family: Rubik;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: $font-size;
 	font-style: normal;
 	font-weight: 400;
