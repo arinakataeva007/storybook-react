@@ -1,0 +1,89 @@
+@import '../../../assets/styles/styles.scss';
+
+.split-btn,
+.split-button--light-theme {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: $paddingSize-Small;
+	box-sizing: border-box;
+	background: transparent;
+	border: 1px solid var(--component-component-tertiary);
+	::ng-deep {
+		svg path {
+			fill: var(--component-component-base);
+		}
+	}
+	&:hover {
+		::ng-deep {
+			svg path {
+				fill: var(--state-active);
+			}
+		}
+	}
+	&:focus {
+		outline: 1px solid var(--state-active);
+	}
+	&:active {
+		border: 1px solid var(--state-active);
+		background: var(--state-active-low-low-contrast);
+	}
+	&:disabled {
+		background: var(--background-bg-disabled);
+		border-style: none;
+		::ng-deep {
+			svg path {
+				fill: var(--state-disabled);
+			}
+		}
+	}
+}
+.split-button--dark-theme {
+	border: 1px solid var(--component-component-tertiary);
+	::ng-deep {
+		svg path {
+			fill: var(--component-component-base--dark);
+		}
+	}
+	&:hover {
+		::ng-deep {
+			svg path {
+				fill: var(--state-active--dark);
+			}
+		}
+	}
+	&:focus {
+		outline: 1px solid var(--state-active--dark);
+	}
+	&:active {
+		border: 1px solid var(--state-active--dark);
+		background: var(--state-active-low-low-contrast--dark);
+	}
+	&:disabled {
+		background: var(--neutral-grey-dark-active--dark);
+		border-style: none;
+		::ng-deep {
+			svg path {
+				fill: var(--state-disabled--dark);
+			}
+		}
+	}
+}
+.split-button--size--base {
+	width: 24px;
+	height: 24px;
+	::ng-deep {
+		svg {
+			@include size-icon($iconSize-base);
+		}
+	}
+}
+.split-button--size--mid {
+	width: 36px;
+	height: 36px;
+	::ng-deep {
+		svg {
+			@include size-icon($iconSize-Mid);
+		}
+	}
+}

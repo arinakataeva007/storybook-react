@@ -1,0 +1,78 @@
+@import "../../../assets/styles/styles.scss";
+
+.slider-container {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	width: 100%;
+	.slider {
+		width: 100%;
+		appearance: none;
+		outline: none;
+		height: 4px;
+		border-radius: 2px;
+		background: var(--component-component-tertiary);
+		&::-webkit-slider-thumb {
+			appearance: none;
+			width: 16px;
+			height: 16px;
+			background-color: var(--component-component-base);
+			border-radius: 8px;
+		}
+	}
+	.scroll-div {
+		background-color: var(--component-component-base);
+		position: absolute;
+		height: 4px;
+		top: 11px;
+		left: 2px;
+		border-top-left-radius: 2px;
+		border-bottom-left-radius: 2px;
+	}
+	&:hover {
+		.slider::-webkit-slider-thumb {
+			background-color: var(--state-active);
+		}
+		.scroll-div {
+			background-color: var(--state-active);
+		}
+	}
+}
+.slider--disabled--light-theme {
+	pointer-events: none;
+	.slider::-webkit-slider-thumb {
+		background-color: var(--state-disabled);
+	}
+	.scroll-div {
+		background-color: var(--state-disabled);
+	}
+}
+
+.slider--dark-theme {
+	.slider {
+		background: var(--text-tertiary-text-default--dark);
+		&::-webkit-slider-thumb {
+			background-color: var(--text-base-text-default--dark);
+		}
+	}
+	.scroll-div {
+		background-color: var(--text-base-text-default--dark);
+	}
+	&:hover {
+		.slider::-webkit-slider-thumb {
+			background-color: var(--state-active--dark);
+		}
+		.scroll-div {
+			background-color: var(--state-active--dark);
+		}
+	}
+}
+.slider--disabled--dark-theme {
+	pointer-events: none;
+	.slider::-webkit-slider-thumb {
+		background-color: var(--state-disabled--dark);
+	}
+	.scroll-div {
+		background-color: var(--state-disabled--dark);
+	}
+}

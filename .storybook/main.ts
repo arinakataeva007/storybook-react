@@ -15,7 +15,6 @@ const config: StorybookConfig = {
     options: {},
   },
   webpackFinal: async (config) => {
-    // Убедитесь, что config.module существует
     if (!config.module) {
       config.module = { rules: [] };
     }

@@ -1,0 +1,26 @@
+@import "../../../assets/styles/styles.scss";
+:host {
+	position: relative;
+	.right-rectangle,
+	.left-rectangle {
+		width: 100%;
+		height: 100%;
+		border-radius: var(--default, 4px);
+	}
+	.right-rectangle {
+		background-color: var(--component-component-tertiary);
+	}
+	.left-rectangle {
+		position: absolute;
+		top: 0px;
+		width: 0px;
+		background-color: var(--state-active);
+		border-right: 1px solid var(--state-active-low-contrast);
+	}
+	.progress-bar--left--dark-theme {
+		background: var(--state-active-low-contrast--dark);
+	}
+	.progress-bar--right--dark-theme {
+		background: var(--text-tertiary-text-default--dark);
+	}
+}

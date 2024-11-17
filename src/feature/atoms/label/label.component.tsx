@@ -7,8 +7,9 @@ interface LabelComponentProps {
   iconPadding?: 'left' | 'right';
   isOwner?: boolean;
   disabled?: boolean;
-  size?: 'small' | 'medium' | 'large';  // Пример возможных размеров
-  theme?: 'light' | 'dark';  // Пример возможных тем
+  size?: 'base' | 'mid' | 'large' | 'extra-large'; 
+  theme?: 'light' | 'dark';  
+  children?: React.ReactNode;
 }
 
 export const LabelComponent: React.FC<LabelComponentProps> = ({
@@ -18,7 +19,7 @@ export const LabelComponent: React.FC<LabelComponentProps> = ({
   iconPadding = 'left',
   isOwner = false,
   disabled = false,
-  size = 'medium',
+  size = 'mid',
   theme = 'light',
 }) => {
   const getClasses = (): string[] => {
