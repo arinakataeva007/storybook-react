@@ -1,5 +1,6 @@
 import React from 'react';
 import './label.style.scss';
+
 interface LabelComponentProps {
   showIcon: boolean;
   showText: boolean;
@@ -7,8 +8,8 @@ interface LabelComponentProps {
   iconPadding?: 'left' | 'right';
   isOwner?: boolean;
   disabled?: boolean;
-  size?: 'base' | 'mid' | 'large' | 'extra-large'; 
-  theme?: 'light' | 'dark';  
+  size?: 'base' | 'mid' | 'large' | 'extra-large';
+  theme?: 'light' | 'dark';
   children?: React.ReactNode;
 }
 
@@ -21,35 +22,23 @@ export const LabelComponent: React.FC<LabelComponentProps> = ({
   disabled = false,
   size = 'mid',
   theme = 'light',
+  children,
 }) => {
-  const getClasses = (): string[] => {
+  const getClasses = (): string => {
     const mode = isOwner ? 'label-with-owner' : 'label-without-owner';
     const disabledClass = disabled ? `label--disabled label--disabled--${theme}` : '';
-    const sizeClass = `label--size--${size}`;
-    const themeClass = `label--theme--${theme}`;
-    return [disabledClass, sizeClass, themeClass, mode].filter(Boolean);
-  };
-
-  const getPaddingClass = (): string[] => {
-    if (iconPadding === 'left') {
-      return ['symbol-padding--left'];
-    } else if (iconPadding === 'right') {
-      return ['symbol-padding--right'];
-    }
-    return [];
+    const paddingClass = iconPadding === 'left' ? 'symbol-padding--left' : 'symbol-padding--right';
+    return `${mode} ${disabledClass} label--size--${size} label--theme--${theme} ${paddingClass}`.trim();
   };
 
   return (
-    <section className={getClasses().join(' ')}>
-      {showIcon && <div className="icon-left">{/* Здесь ваш иконка слева, если есть */}</div>}
-      
-      {showText && (
-        <div className={`label-container ${getPaddingClass().join(' ')}`}>
-          {label}
+    <section className={getClasses()}>
+      {showIcon && children && (
+        <div className="icon-container">
+          {children}
         </div>
       )}
-      
-      {showIcon && <div className="icon-right">{/* Здесь ваш иконка справа, если есть */}</div>}
+      {showText && <div className="label-container">{label}</div>}
     </section>
   );
 };
