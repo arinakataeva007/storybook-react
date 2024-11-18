@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './base-button.style.scss';
 import { SizeProps, ThemeProps } from "../../../shared/defaultProps";
 
-interface BaseButtonProps extends SizeProps, ThemeProps{
+export interface BaseButtonProps extends SizeProps, ThemeProps{
   name: string;
   isOwner?: boolean;
 }

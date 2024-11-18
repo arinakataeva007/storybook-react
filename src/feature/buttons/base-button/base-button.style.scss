@@ -1,109 +1,98 @@
 @import "../../../assets/styles/styles.scss";
 
-.container,
-.symbol-theme--light-theme {
-	padding: 0;
-	margin: 0;
-	display: flex;
-	align-items: center;
-	box-sizing: border-box;
-	background: transparent;
-	border-style: none;
-	&:hover {
-		::ng-deep {
-			svg path {
-				fill: var(--state-active);
-			}
-		}
-	}
-	&:focus {
-		outline: none;
-		border-radius: var(--Small, 2px);
-		outline: 1px solid var(--state-active);
-	}
-	&:active {
-		outline: none;
-		border-radius: var(--Small, 2px);
-		background: var(--state-active-low-low-contrast);
-	}
-	&.with-owner{
-		&:active {
-			outline: none;
-			border-radius: var(--Small, 2px);
-			background: transparent;
-		}
-	}
+.container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &:hover {
+    svg path {
+      fill: var(--state-active);
+    }
+  }
+
+  &:focus {
+    border-radius: var(--Small, 2px);
+    outline: 1px solid var(--state-active);
+  }
+
+  &:active {
+    border-radius: var(--Small, 2px);
+    background: var(--state-active-low-low-contrast);
+  }
+
+  &.with-owner {
+    &:active {
+      background: transparent;
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    svg path {
+      fill: var(--state-disabled);
+    }
+  }
 }
-.symbol-disabled,
-.symbol-theme--disabled--light-theme {
-	pointer-events: none;
-	::ng-deep {
-		svg path {
-			fill: var(--state-disabled);
-		}
-	}
-}
-.symbol-theme--disabled--dark-theme {
-	pointer-events: none;
-	::ng-deep {
-		svg path {
-			fill: var(--state-disabled--dark);
-		}
-	}
-}
+
 .symbol-theme--dark-theme {
-	::ng-deep {
-		svg path {
-			fill: var(--component-component-tertiary);
-		}
-	}
-	&:hover {
-		::ng-deep {
-			svg path {
-				fill: var(--state-active--dark);
-			}
-		}
-	}
-	&:focus {
-		outline: none;
-		border-radius: var(--Small, 2px);
-		outline: 1px solid var(--state-active--dark);
-	}
-	&:active {
-		outline: none;
-		border-radius: var(--Small, 2px);
-		background: var(--state-active-low-low-contrast--dark);
-	}
+  svg path {
+    fill: var(--component-component-tertiary);
+  }
+
+  &:hover {
+    svg path {
+      fill: var(--state-active--dark);
+    }
+  }
+
+  &:focus {
+    border-radius: var(--Small, 2px);
+    outline: 1px solid var(--state-active--dark);
+  }
+
+  &:active {
+    border-radius: var(--Small, 2px);
+    background: var(--state-active-low-low-contrast--dark);
+  }
 }
+
 .symbol-size--base {
-	@include size-icon($iconSize-base);
-	::ng-deep {
-		svg {
-			@include size-icon($iconSize-base);
-		}
-	}
+  @include size-icon($iconSize-base);
+  svg {
+    @include size-icon($iconSize-base);
+  }
 }
+
 .symbol-size--mid {
-	@include size-icon($iconSize-Mid);
-	::ng-deep {
-		svg {
-			@include size-icon($iconSize-Mid);
-		}
-	}
+  @include size-icon($iconSize-Mid);
+  svg {
+    @include size-icon($iconSize-Mid);
+  }
 }
+
 .symbol-size--large {
-	@include size-icon($iconSize-Large);
-	::ng-deep {
-		svg {
-			@include size-icon($iconSize-Large);
-		}
-	}
+  @include size-icon($iconSize-Large);
+  svg {
+    @include size-icon($iconSize-Large);
+  }
 }
+
 .symbol-size--extra-large {
-	@include size-icon($iconSize-Extra-Large);
-	::ng-deep {
-		svg {
-			@include size-icon($iconSize-Extra-Large);
-		}
-	}
+  @include size-icon($iconSize-Extra-Large);
+  svg {
+    @include size-icon($iconSize-Extra-Large);
+  }
+}
+
+.symbol-theme--disabled--dark-theme {
+  pointer-events: none;
+  svg path {
+    fill: var(--state-disabled--dark);
+  }
 }

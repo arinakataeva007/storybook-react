@@ -1,7 +1,6 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { BaseButton } from "../../feature/buttons/base-button/base-button.component";
-
+import { StoryObj, Meta } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
+import { BaseButton, BaseButtonProps } from "../../feature/buttons/base-button/base-button.component";
 
 const meta: Meta<typeof BaseButton> = {
   title: "Buttons/BaseButton",
@@ -57,7 +56,6 @@ const meta: Meta<typeof BaseButton> = {
 
 export default meta;
 type Story = StoryObj<typeof BaseButton>;
-
 export const Default: Story = {
   args: {
     size: "base",
