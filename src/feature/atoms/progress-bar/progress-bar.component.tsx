@@ -1,34 +1,38 @@
-import React, { Component } from 'react';
-import './progress-bar.style.scss';
+import React, { Component, createRef } from "react";
+import "./progress-bar.style.scss";
 
-interface ProgressBarComponentProps {
-  leftRectangleWidth: number;
-  theme: string;
+interface ProgressBarProps {
+  leftRectangleWidth: string;
+  theme: "light-theme" | "dark-theme";
 }
 
-class ProgressBarComponent extends Component<ProgressBarComponentProps> {
+export class ProgressBarComponent extends Component<ProgressBarProps> {
   private leftRectangleRef: React.RefObject<HTMLDivElement>;
 
-  constructor(props: ProgressBarComponentProps) {
+  constructor(props: ProgressBarProps) {
     super(props);
-    this.leftRectangleRef = React.createRef<HTMLDivElement>();
+    this.leftRectangleRef = createRef();
   }
 
-  componentDidUpdate(prevProps: ProgressBarComponentProps) {
+  componentDidUpdate(prevProps: ProgressBarProps) {
     if (prevProps.leftRectangleWidth !== this.props.leftRectangleWidth && this.leftRectangleRef.current) {
       this.leftRectangleRef.current.style.width = `${this.props.leftRectangleWidth}%`;
     }
   }
 
   render() {
-    const { leftRectangleWidth, theme } = this.props;
+    const { theme, leftRectangleWidth } = this.props;
     const classForLeftRectangle = `progress-bar--left--${theme}`;
     const classForRightRectangle = `progress-bar--right--${theme}`;
 
     return (
       <div className="progress-bar">
-        <div ref={this.leftRectangleRef} className={`left-rectangle ${classForLeftRectangle}`}></div>
         <div className={`right-rectangle ${classForRightRectangle}`}></div>
+        <div
+          ref={this.leftRectangleRef}
+          className={`left-rectangle ${classForLeftRectangle}`}
+          style={ {width: `${leftRectangleWidth}%`} }
+        ></div>
       </div>
     );
   }

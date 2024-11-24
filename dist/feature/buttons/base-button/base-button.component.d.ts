@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './base-button.style.scss';
-interface BaseButtonProps {
-    isOwner?: boolean;
+import { SizeProps, ThemeProps } from "../../../shared/defaultProps";
+export interface BaseButtonProps extends SizeProps, ThemeProps {
     name: string;
-    theme: string;
-    size: string;
-    disabled?: boolean;
+    isOwner?: boolean;
 }
-declare class BaseButton extends Component<BaseButtonProps> {
+export declare class BaseButton extends Component<BaseButtonProps> {
     private baseBtnEl;
     constructor(props: BaseButtonProps);
     componentDidMount(): void;

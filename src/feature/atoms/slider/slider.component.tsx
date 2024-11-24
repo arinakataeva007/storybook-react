@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import './slider.style.scss';
 
 interface SliderComponentProps {
   theme: string;
   disabled: boolean;
-  onSendProgress: (value: string) => void;
+  onSendProgress?: (value: string) => void; // Сделать этот пропс необязательным
 }
 
-class SliderComponent extends Component<SliderComponentProps> {
+export class SliderComponent extends Component<SliderComponentProps> {
   private scrollbarRef: React.RefObject<HTMLInputElement>;
   private scrollTrackRef: React.RefObject<HTMLDivElement>;
 
@@ -27,8 +28,8 @@ class SliderComponent extends Component<SliderComponentProps> {
 
     if (this.scrollTrackRef.current && this.scrollbarRef.current) {
       const value = this.scrollbarRef.current.value;
-      this.scrollTrackRef.current.style.width = `${value}%`;
-      onSendProgress(value);
+      this.scrollTrackRef.current.style.width = value + '%';
+      (onSendProgress || (() => {}))(value);
     }
   }
 
@@ -38,7 +39,7 @@ class SliderComponent extends Component<SliderComponentProps> {
     if (this.scrollTrackRef.current && this.scrollbarRef.current) {
       const value = this.scrollbarRef.current.value;
       this.scrollTrackRef.current.style.width = `${value}%`;
-      onSendProgress(value);
+      (onSendProgress || (() => {}))(value); 
     }
   }
 

@@ -25,6 +25,8 @@ const StartWindowAction = ({ label, theme, disabled, onSendState }:any) => {
         isOwner={true}
         showIcon={false}
         showText={true}
+        theme={theme}
+        iconPadding={'right'}
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
