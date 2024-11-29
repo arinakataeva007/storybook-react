@@ -2,62 +2,52 @@
 
 .start-btn,
 .start-btn--light-theme {
-	height: 24px;
-	width: auto;
-	align-items: center;
-	display: flex;
-	box-sizing: border-box;
-	gap: $paddingSize-Small;
-	border-style: none;
-	background: transparent;
-	&:hover {
-		::ng-deep {
-			* {
-				fill: var(--state-active);
-				color: var(--state-active);
-			}
-		}
-	}
-	&:disabled {
-		::ng-deep {
-			* {
-				fill: var(--state-disabled);
-				color: var(--state-disabled);
-			}
-		}
-	}
-	&:focus {
-		outline: none;
-		border-radius: $borderRadius-base;
-		outline: 1px solid var(--state-active);
-	}
+  height: 24px;
+  width: auto;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  gap: $paddingSize-Small;
+  border-style: none;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--state-active);
+    fill: var(--state-active);
+  }
+
+  
+  &:disabled {
+    color: var(--state-disabled);
+    fill: var(--state-disabled);
+    pointer-events: none; 
+  }
+
+  &:focus {
+    outline: none;
+    border-radius: $borderRadius-base;
+    outline: 1px solid var(--state-active);
+  }
 }
+
 .start-btn--dark-theme {
-	::ng-deep {
-		* {
-			fill: var(--component-component-tertiary);
-			color: var(--component-component-tertiary);
-		}
-	}
-	&:hover {
-		::ng-deep {
-			* {
-				fill: var(--state-active--dark);
-				color: var(--state-active--dark);
-			}
-		}
-	}
-	&:disabled {
-		::ng-deep {
-			* {
-				fill: var(--state-disabled--dark);
-				color: var(--state-disabled--dark);
-			}
-		}
-	}
-	&:focus {
-		outline: none;
-		border-radius: $borderRadius-base;
-		outline: 1px solid var(--state-active--dark);
-	}
+  color: var(--component-component-tertiary);
+  fill: var(--component-component-tertiary);
+
+  &:hover {
+    color: var(--state-active--dark);
+    fill: var(--state-active--dark);
+  }
+
+  &:disabled {
+    color: var(--state-disabled--dark);
+    fill: var(--state-disabled--dark);
+  }
+
+  &:focus {
+    outline: none;
+    border-radius: $borderRadius-base;
+    outline: 1px solid var(--state-active--dark);
+  }
 }

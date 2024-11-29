@@ -5,7 +5,7 @@ interface LabelComponentProps {
   label: string;
   size: "base" | "mid" | "large" | "extra-large";
   theme: "light-theme" | "dark-theme";
-  iconPadding: "left" | "right";
+  iconPadding?: "left" | "right";
   isOwner?: boolean;
   disabled?: boolean;
   showIcon?: boolean;

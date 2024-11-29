@@ -1,32 +1,41 @@
 import React from 'react';
-import LabelComponent from '../../atoms/label/label.component'; 
+import { LabelComponent } from '../../atoms/label/label.component';
 import './start-window.style.scss';
 
-const StartWindowAction = ({ label, theme, disabled, onSendState }:any) => {
-  const classes = () => {
-    return [`start-btn--${theme}`].join(' ');
-  };
+interface StartWindowActionComponentProps {
+  label: string;
+  theme: 'light-theme' | 'dark-theme';
+  disabled?: boolean;
+  onStateChange: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
 
-  const handleClick = (event:any) => {
-    if (onSendState) {
-      onSendState(event);
+export const StartWindowActionComponent: React.FC<StartWindowActionComponentProps> = ({
+  label,
+  theme,
+  disabled = false,
+  onStateChange,
+}) => {
+  const classes = [`start-btn--${theme}`];
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (!disabled) {
+      onStateChange(event); 
     }
   };
 
   return (
     <button
-      className={`start-btn ${classes()}`}
+      className={`start-btn ${classes.join(' ')}`}
       disabled={disabled}
       onClick={handleClick}
     >
       <LabelComponent
         label={label}
         size="base"
+        theme={theme}
         isOwner={true}
         showIcon={false}
         showText={true}
-        theme={theme}
-        iconPadding={'right'}
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -35,15 +44,7 @@ const StartWindowAction = ({ label, theme, disabled, onSendState }:any) => {
         viewBox="0 0 16 16"
         fill="none"
       >
-        <mask
-          id="mask0_1241_598"
-          style={{ maskType: 'alpha' }}
-          maskUnits="userSpaceOnUse"
-          x="0"
-          y="0"
-          width="16"
-          height="16"
-        >
+        <mask id="mask0_1241_598" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
           <rect width="16" height="16" fill="#D9D9D9" />
         </mask>
         <g mask="url(#mask0_1241_598)">
@@ -57,4 +58,4 @@ const StartWindowAction = ({ label, theme, disabled, onSendState }:any) => {
   );
 };
 
-export default StartWindowAction;
+export default StartWindowActionComponent;

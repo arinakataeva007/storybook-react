@@ -1,160 +1,145 @@
 @import '../../../assets/styles/styles.scss';
 
 @mixin button-state-light-theme($background, $fillHover, $fillActive) {
-	&:hover {
-		background: $fillHover;
-	}
-	&:focus {
-		outline: none;
-		outline: 1px solid $background;
-	}
-	&:active {
-		outline: none;
-		background: $background;
-		rl-label {
-			::ng-deep {
-				* {
-					fill: $fillActive;
-					color: $fillActive;
-				}
-			}
-		}
-	}
+  &:not(&:focus):hover {
+    background: $fillHover;
+  }
+  &:focus {
+    outline: none;
+    outline: 1px solid $background;
+  }
+  &:active {
+    outline: none;
+    background: $background;
+    
+    .label * {
+      fill: $fillActive;
+      color: $fillActive;
+    }
+  }
 }
+
 @mixin button-state-dark-theme($outlineHover, $outlineFocus, $outlineActive, $background) {
-	&:hover {
-		border: 1px solid $outlineHover;
-	}
-	&:focus {
-		outline: none;
-		outline: 1px solid $outlineFocus;
-	}
-	&:active {
-		outline: none;
-		background: $background;
-		rl-label {
-			::ng-deep {
-				* {
-					fill: $outlineActive;
-					color: $outlineActive;
-				}
-			}
-		}
-	}
+  &:not(&:focus):hover {
+    border: 1px solid $outlineHover;
+  }
+  &:focus {
+    outline: none;
+    outline: 1px solid $outlineFocus;
+  }
+  &:active {
+    outline: none;
+    background: $background;
+
+    .label * {
+      fill: $outlineActive;
+      color: $outlineActive;
+    }
+  }
 }
+
 @mixin state-disabled($fill, $background) {
-	pointer-events: none;
-	background: $background;
-	rl-label {
-		::ng-deep {
-			div {
-				color: $fill;
-			}
-			svg path {
-				fill: $fill;
-			}
-		}
-	}
+  pointer-events: none;
+  background: $background;
+
+  .label {
+    div {
+      color: $fill;
+    }
+    svg path {
+      fill: $fill;
+    }
+  }
 }
+
 .button {
-	::ng-deep {
-		* {
-		}
-	}
-	display: flex;
-	min-width: 80px;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	height: 24px;
-	padding: 0;
-	box-sizing: border-box;
-	background: transparent;
-	border-style: none;
-	.label-container {
-		max-width: 100%;
-	}
+  display: flex;
+  min-width: 80px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border-style: none;
+
+  .label-container {
+    max-width: 100%;
+  }
 }
+
 .button--primary,
 .button--primary--light-theme {
-	rl-label {
-		::ng-deep {
-			* {
-				color: var(--text-text-inverse);
-				fill: var(--text-text-inverse);
-			}
-		}
-	}
-	border-radius: $borderRadius-base;
-	background: var(--objects-button-default);
-	@include button-state-light-theme(var(--state-active), var(--package-system-core), var(--text-text-inverse));
+  .label * {
+    color: var(--text-text-inverse);
+    fill: var(--text-text-inverse);
+  }
+  border-radius: $borderRadius-base;
+  background: var(--objects-button-default);
+  @include button-state-light-theme(var(--state-active), var(--package-system-core), var(--text-text-inverse));
 }
+
 .button--disabled--primary,
 .button--disabled--primary--light-theme {
-	@include state-disabled(var(--state-disabled), var(--background-bg-disabled));
+  @include state-disabled(var(--state-disabled), var(--background-bg-disabled));
 }
+
 .button--primary--dark-theme {
-	::ng-deep {
-		* {
-		}
-	}
-	background: var(--component-component-base--dark);
-	rl-label {
-		::ng-deep {
-			* {
-				color: var(--text-text-inverse--dark);
-				fill: var(--text-text-inverse--dark);
-			}
-		}
-	}
-	@include button-state-light-theme(
-		var(--state-active--dark),
-		var(--component-component-secondary--dark),
-		var(--text-text-inverse--dark)
-	);
+  background: var(--component-component-base--dark);
+  
+  .label * {
+    color: var(--text-text-inverse--dark);
+    fill: var(--text-text-inverse--dark);
+  }
+
+  @include button-state-light-theme(
+    var(--state-active--dark),
+    var(--component-component-secondary--dark),
+    var(--text-text-inverse--dark)
+  );
 }
+
 .button--disabled--primary--dark-theme {
-	@include state-disabled(var(--state-disabled--dark), var(--background-bg-disabled--dark));
+  @include state-disabled(var(--state-disabled--dark), var(--background-bg-disabled--dark));
 }
+
 .button--secondary,
 .button--secondary--light-theme {
-	border-radius: $borderRadius-base;
-	border: 1px solid var(--component-component-tertiary);
-	background: transparent;
-	@include button-state-dark-theme(
-		var(--state-active),
-		var(--state-active),
-		var(--state-active),
-		var(--Background-Bg-default)
-	);
+  border-radius: $borderRadius-base;
+  border: 1px solid var(--component-component-tertiary);
+  background: transparent;
+  @include button-state-dark-theme(
+    var(--state-active),
+    var(--state-active),
+    var(--state-active),
+    var(--Background-Bg-default)
+  );
 }
+
 .button--secondary--dark-theme {
-	::ng-deep {
-		* {
-		}
-	}
-	border: 1px solid var(--component-component-secondary);
-	rl-label {
-		::ng-deep {
-			* {
-				color: var(--component-component-base--dark);
-				fill: var(--component-component-base--dark);
-			}
-		}
-	}
-	@include button-state-dark-theme(
-		var(--state-active--dark),
-		var(--state-active--dark),
-		var(--state-active--dark),
-		transparent
-	);
+  border: 1px solid var(--component-component-secondary);
+  
+  .label * {
+    color: var(--component-component-base--dark);
+    fill: var(--component-component-base--dark);
+  }
+
+  @include button-state-dark-theme(
+    var(--state-active--dark),
+    var(--state-active--dark),
+    var(--state-active--dark),
+    transparent
+  );
 }
+
 .button--disabled--secondary,
 .button--disabled--secondary--light-theme {
-	border: 1px solid var(--state-disabled);
-	@include state-disabled(var(--state-disabled), transparent);
+  border: 1px solid var(--state-disabled);
+  @include state-disabled(var(--state-disabled), transparent);
 }
+
 .button--disabled--secondary--dark-theme {
-	border: 1px solid var(--state-disabled--dark);
-	@include state-disabled(var(--state-disabled--dark), transparent);
+  border: 1px solid var(--state-disabled--dark);
+  @include state-disabled(var(--state-disabled--dark), transparent);
 }

@@ -1,0 +1,24 @@
+@import '../../../assets/styles/styles.scss';
+.symbol-driver path,
+.symbol-light-theme path {
+	fill: var(--package-system-app);
+}
+.symbol-dark-theme--driver path,
+.symbol-dark-theme path {
+	fill: var(--state-connection-low-contrast);
+}
+.symbol-disabled path {
+	fill: var(--state-disabled);
+}
+.symbol-size--base {
+	@include size-icon($iconSize-base);
+}
+.symbol-size--mid {
+	@include size-icon($iconSize-Mid);
+}
+.symbol-size--large {
+	@include size-icon($iconSize-Large);
+}
+.symbol-size--extra-large {
+	@include size-icon($iconSize-Extra-Large);
+}

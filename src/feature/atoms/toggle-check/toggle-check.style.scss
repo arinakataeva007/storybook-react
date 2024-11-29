@@ -1,0 +1,94 @@
+@import "../../../assets/styles/styles.scss";
+.toggle-check-container {
+	position: relative;
+	.toggle-check {
+		display: none;
+	}
+	.toggle-btn {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		display: block;
+		padding: $paddingSize-base;
+		width: $iconSize-Large;
+		height: $iconSize-base;
+		border-radius: 52px;
+		background: var(--component-component-tertiary);
+		transition: 240ms;
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			@include size-icon($iconSize-base);
+			border-radius: $borderRadius-Mid;
+			background-color: var(--component-component-base);
+			transition: 240ms;
+		}
+	}
+	.toggle-check:checked + .toggle-btn {
+		background: var(--state-active-low-contrast);
+	}
+	.toggle-check:checked + .toggle-btn::after {
+		background: var(--state-active-low-contrast);
+		transform: translateX(100%);
+	}
+	.toggle--dark-theme {
+		background: var(--component-component-tertiary--dark);
+		&::after {
+			background-color: var(--component-component-base--dark);
+		}
+	}
+	.toggle-check:checked + .toggle-btn {
+		background: var(--state-active-low-contrast--dark);
+	}
+	.toggle-check:checked + .toggle-btn::after {
+		background: var(--state-active--dark);
+		transform: translateX(100%);
+	}
+	.toggle-check:disabled + .toggle--disabled--light-theme {
+		background: var(--background-bg-disabled);
+	}
+	.toggle-check:disabled + .toggle--disabled--light-theme::after {
+		background: var(--state-disabled);
+		outline: none;
+	}
+	.toggle-check:disabled + .toggle--disabled--dark-theme {
+		background: var(--neutral-grey-dark-active--dark);
+	}
+	.toggle-check:disabled + .toggle--disabled--dark-theme::after {
+		background: var(--state-disabled);
+		outline: none;
+	}
+	&:hover {
+		.toggle-btn {
+			background: var(--component-component-tertiary);
+			&::after {
+				background-color: var(--component-component-tertiary);
+				outline: 2px solid var(--component-component-base);
+				outline-offset: -2px;
+			}
+		}
+		.toggle-check:checked + .toggle-btn::after {
+			background: var(--state-active-low-contrast);
+			outline: 2px solid var(--state-active);
+			outline-offset: -2px;
+			transform: translateX(100%);
+		}
+		.toggle--dark-theme {
+			background: var(--component-component-tertiary--dark);
+			&::after {
+				background-color: var(--component-component-tertiary--dark);
+				outline: 2px solid var(--component-component-base--dark);
+				outline-offset: -2px;
+			}
+		}
+		.toggle-check:checked + .toggle--dark-theme::after {
+			background: var(--state-active-low-contrast--dark);
+			outline: 2px solid var(--state-active--dark);
+			outline-offset: -2px;
+			transform: translateX(100%);
+		}
+	}
+}

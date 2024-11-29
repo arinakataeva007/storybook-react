@@ -1,0 +1,195 @@
+// @import '../../assets/styles/styles.scss';
+
+// .text-field-container {
+// 	width: 100%;
+// 	position: relative;
+// 	display: flex;
+// 	#hint-container {
+// 		position: absolute;
+// 		right: $paddingSize-Small;
+// 		padding-left: $paddingSize-base;
+// 		rl-label {
+// 			::ng-deep {
+// 				.label--size--base {
+// 					.label-container {
+// 						font-size: 12px;
+// 						color: var(--text-secondary-text-default);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	input,
+// 	.input--light-theme {
+// 		background: transparent;
+// 		border-radius: $borderRadius-base;
+// 		border: 1px solid var(--component-component-secondary);
+// 		padding-left: $paddingSize-base;
+// 		padding-right: $paddingSize-base;
+// 		white-space: nowrap;
+// 		width: 100%;
+// 		height: 24px;
+// 		box-sizing: border-box;
+// 		color: var(--text-base-text-default);
+// 		font-family: Rubik;
+// 		font-size: 14px;
+// 		&::placeholder {
+// 			color: var(--text-secondary-text-default);
+// 			font-size: 14px;
+// 			font-family: Rubik;
+// 		}
+// 		&:hover {
+// 			background: var(--background-bg-2);
+// 		}
+// 		&:focus {
+// 			background: transparent;
+// 			outline: none;
+// 			border-radius: var(--default, 4px);
+// 			border: 1px solid var(--state-active);
+// 		}
+// 		&:active {
+// 			background: transparent;
+// 			outline: none;
+// 			border-radius: var(--default, 4px);
+// 			border: 1px solid var(--state-active);
+// 		}
+// 		&[type='text'] {
+// 			overflow: hidden;
+// 			user-select: none;
+// 			text-overflow: ellipsis;
+// 		}
+// 		&[type='password'] {
+// 			overflow: visible;
+// 			padding-top: 0;
+// 			margin: 0;
+// 			letter-spacing: 4px;
+// 			-webkit-text-stroke-width: 2.6px;
+// 			font-family: Verdana, Geneva, Tahoma, sans-serif;
+// 			&::placeholder {
+// 				-webkit-text-stroke-width: 0px;
+// 				letter-spacing: 0em;
+// 				color: var(--text-secondary-text-default);
+// 				font-size: 14px;
+// 				font-family: Rubik;
+// 				display: flex;
+// 				justify-content: center;
+// 			}
+// 		}
+// 	}
+
+// 	.input--disabled--light-theme {
+// 		pointer-events: none;
+// 		color: var(--state-disabled);
+// 		border: 1px solid var(--state-disabled);
+// 		&[type='text']::placeholder {
+// 			color: var(--state-disabled);
+// 		}
+// 		&[type='password']::placeholder {
+// 			overflow: visible;
+// 			color: var(--state-disabled);
+// 		}
+// 		&::placeholder {
+// 			color: var(--state-disabled);
+// 		}
+// 	}
+// 	.input--disabled--dark-theme {
+// 		pointer-events: none;
+// 		color: var(--state-disabled--dark);
+// 		border: 1px solid var(--state-disabled--dark);
+// 		&[type='password']::placeholder {
+// 			overflow: visible;
+// 			color: var(--state-disabled--dark);
+// 		}
+// 		&::placeholder {
+// 			color: var(--state-disabled--dark);
+// 		}
+// 		&:hover {
+// 			background: transparent;
+// 		}
+// 	}
+// 	&:has(.input--disabled--light-theme) {
+// 		#hint-container {
+// 			rl-label {
+// 				::ng-deep {
+// 					.label--size--base {
+// 						.label-container {
+// 							color: var(--state-disabled);
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	&:has(.input--disabled--dark-theme) {
+// 		#hint-container {
+// 			rl-label {
+// 				::ng-deep {
+// 					.label--size--base {
+// 						.label-container {
+// 							color: var(--state-disabled--dark);
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	&.ng-dirty {
+// 		&.ng-invalid {
+// 			input {
+// 				border: 1px solid var(--state-error);
+// 			}
+// 			.input--dark-theme {
+// 				border: 1px solid var(--state-error--dark);
+// 			}
+// 		}
+// 	}
+
+// 	::ng-deep {
+// 		.prefix {
+// 			position: absolute;
+// 			top: 4px;
+// 			right: $paddingSize-base;
+// 		}
+// 	}
+
+// 	.input--dark-theme {
+// 		border: 1px solid var(--component-component-secondary--dark);
+// 		color: var(--text-base-text-default--dark);
+// 		&::placeholder {
+// 			color: var(--text-secondary-text-default--dark);
+// 			font-size: 14px;
+// 			font-family: Rubik;
+// 		}
+// 		&:hover {
+// 			background: var(--background-bg-2--dark);
+// 		}
+// 		&:focus {
+// 			background: transparent;
+// 			outline: none;
+// 			border: 1px solid var(--state-active--dark);
+// 		}
+// 		&:active {
+// 			background: transparent;
+// 			outline: none;
+// 			border-radius: var(--default, 4px);
+// 			border: 1px solid var(--state-active--dark);
+// 		}
+// 		&[type='password'] {
+// 			overflow: visible;
+// 			color: var(--text-base-text-default--dark);
+// 			letter-spacing: 4px;
+// 			-webkit-text-stroke-width: 3px;
+// 			font-family: Verdana, Geneva, Tahoma, sans-serif;
+// 			&::placeholder {
+// 				-webkit-text-stroke-width: 0px;
+// 				letter-spacing: 0em;
+// 				color: var(--text-secondary-text-default--dark);
+// 				font-size: 14px;
+// 				font-family: Rubik;
+// 				display: flex;
+// 				justify-content: center;
+// 			}
+// 		}
+// 	}
+// }
