@@ -1,47 +1,70 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
+import './rich-text.style.scss';
 
-// const RichTextField = ({
-//   placeholder = '',
-//   hint = '',
-//   showHint = false,
-//   theme = 'light-theme',
-//   value = '',
-//   disabled = false,
-//   onChange = () => {},
-//   onInput = () => {}
-// }) => {
-//   const [rlValue, setRlValue] = useState(value);
+// Определяем типы пропсов компонента
+interface RichTextFieldProps {
+  placeholder?: string;
+  hint?: string;
+  showHint?: boolean;
+  theme?: string;
+  onInputChange?: (value: string) => void;
+  onValueChange?: (value: string) => void;
+  disabled?: boolean;
+}
 
-//   // Sync with external changes (similar to ngOnChanges in Angular)
-//   useEffect(() => {
-//     setRlValue(value);
-//   }, [value]);
+// Определяем интерфейс для рефа
+export interface RichTextFieldRef {
+  setValue: (newValue: string) => void;
+  getValue: () => string;
+}
 
-//   const handleInput = (event) => {
-//     const { value } = event.target;
-//     setRlValue(value);
-//     onInput(value);
-//   };
+export const RichTextField = forwardRef<RichTextFieldRef, RichTextFieldProps>(
+  (
+    {
+      placeholder = '',
+      hint = '',
+      showHint = false,
+      theme = '',
+      onInputChange,
+      onValueChange,
+      disabled = false,
+    },
+    ref
+  ) => {
+    const [value, setValue] = useState<string>('');
 
-//   const handleChange = (event) => {
-//     const { value } = event.target;
-//     setRlValue(value);
-//     onChange(value);
-//   };
+    const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = event.target.value;
+      setValue(newValue);
+      if (onInputChange) onInputChange(newValue);
+    };
 
-//   return (
-//     <div>
-//       <textarea
-//         className={`rich-text-field ${theme === 'dark-theme' ? 'dark-theme' : ''}`}
-//         placeholder={placeholder}
-//         disabled={disabled}
-//         value={rlValue}
-//         onInput={handleInput}
-//         onChange={handleChange}
-//       ></textarea>
-//       {showHint && <div className="hint-container-rich">{hint}</div>}
-//     </div>
-//   );
-// };
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = event.target.value;
+      setValue(newValue);
+      if (onValueChange) onValueChange(newValue);
+    };
 
-// export default RichTextField;
+    // Используем useImperativeHandle для предоставления методов рефа
+    useImperativeHandle(ref, () => ({
+      setValue: (newValue: string) => setValue(newValue),
+      getValue: () => value,
+    }));
+
+    return (
+      <div className='rich-text'>
+        <textarea
+          className={`rich-text-field ${theme === 'dark-theme' ? 'dark-theme' : ''}`}
+          placeholder={placeholder}
+          disabled={disabled}
+          value={value}
+          onInput={handleInput}
+          onChange={handleChange}
+        ></textarea>
+        {showHint && <div className="hint-container-rich">{hint}</div>}
+      </div>
+    );
+  }
+);
+
+export default RichTextField;
