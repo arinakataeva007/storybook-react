@@ -38,3 +38,19 @@ export const DarkTheme: Story = {
     onStateChange: (e) => console.log('Button clicked:', e),
   },
 };
+LightTheme.parameters = {
+  backgrounds: { default: "Light Theme" },
+  docs: {
+    description: {
+      story: "This story demonstrates the light theme of the component.",
+    },
+  },
+};
+DarkTheme.parameters = {
+backgrounds: { default: "Dark Theme" },
+docs: {
+  description: {
+    story: "This story demonstrates the dark theme of the component.",
+  },
+},
+};

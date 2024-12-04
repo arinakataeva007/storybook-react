@@ -1,0 +1,96 @@
+@import '../../assets/styles/styles.scss';
+
+.menu-item-container {
+  width: auto;
+  display: flex;
+  width: auto;
+  height: 24px;
+  justify-content: space-between;
+}
+
+.menu-item-container .footer-container {
+  display: flex;
+  gap: var(--gapSize-base);
+}
+
+.menu-item-container .collapse-btn {
+  background: transparent;
+  border-style: none;
+  box-sizing: border-box;
+  margin-top: var(--gapSize-Small);
+  justify-content: center;
+}
+
+.menu-item-container .collapse-btn:focus,
+.menu-item-container .collapse-btn:active {
+  outline: none;
+}
+
+.menu-item-container:focus {
+  background: transparent;
+  outline: 1px solid var(--state-active);
+  outline-offset: -1px;
+  outline-width: 4px;
+}
+
+.menu-item-container:hover {
+  color: var(--state-active);
+}
+
+.menu-item-container:hover CollapseIcon * {
+  fill: var(--state-active);
+  color: var(--state-active);
+}
+
+.menu-item-container:has(.active) {
+  background: transparent;
+  outline: none;
+}
+
+.menu-item-container:active {
+  outline: none;
+}
+
+.menu-item-disabled-light-theme {
+  pointer-events: none;
+}
+
+.menu-item-disabled-light-theme * {
+  color: var(--state-disabled);
+  fill: var(--state-disabled);
+}
+
+.menu-item-dark-theme Label * {
+  fill: var(--component-component-base--dark);
+  color: var(--component-component-base--dark);
+}
+
+.menu-item-dark-theme:focus {
+  background: transparent;
+  outline: 1px solid var(--state-active--dark);
+  outline-offset: -1px;
+  outline-width: 4px;
+}
+
+.menu-item-dark-theme:hover Label * {
+  fill: var(--state-active--dark);
+  color: var(--state-active--dark);
+}
+
+.menu-item-dark-theme:hover CollapseIcon * {
+  fill: var(--state-active--dark);
+  color: var(--state-active--dark);
+}
+
+.menu-item-disabled-dark-theme {
+  pointer-events: none;
+}
+
+.menu-item-disabled-dark-theme * {
+  color: var(--state-disabled--dark);
+  fill: var(--state-disabled--dark);
+}
+
+.rl-pop-up .popUp-container {
+  width: 100%;
+}

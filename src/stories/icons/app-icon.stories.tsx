@@ -9,12 +9,12 @@ const meta: Meta = {
     size: {
       options: ['base', 'mid', 'large', 'extra-large'],
       control: { type: 'select' },
-      defaultValue: 'base', // Default size value
+      defaultValue: 'base', 
     },
     theme: {
       options: ['light-theme', 'dark-theme'],
       control: { type: 'radio' },
-      defaultValue: 'light-theme', // Default theme value
+      defaultValue: 'light-theme',
     },
     state: {
       options: ['driver', 'disabled'],
@@ -23,7 +23,7 @@ const meta: Meta = {
     type: {
       options: ['server', 'app'],
       control: { type: 'radio' },
-      defaultValue: 'app', // Default type value
+      defaultValue: 'app',
     },
   },
   tags: ['autodocs'],
@@ -33,7 +33,6 @@ export default meta;
 
 type StoryType = StoryObj<typeof AppIconComponent>;
 
-// Light Theme Story
 export const LightTheme: StoryType = {
   parameters: {
     backgrounds: { default: 'Light Theme' },
@@ -45,7 +44,6 @@ export const LightTheme: StoryType = {
   },
 };
 
-// Dark Theme Story
 export const DarkTheme: StoryType = {
   parameters: {
     backgrounds: { default: 'Dark Theme' },

@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import {ToggleCheckComponent} from '../../feature/atoms/toggle-check/toggle-check';
 
-// Define the metadata for the ToggleCheckComponent story
 const meta: Meta<typeof ToggleCheckComponent> = {
   title: 'Atoms/ToggleCheckComponent',
   component: ToggleCheckComponent,
@@ -21,10 +20,8 @@ const meta: Meta<typeof ToggleCheckComponent> = {
 
 export default meta;
 
-// Define the story type
 type Story = StoryObj<typeof ToggleCheckComponent>;
 
-// Define the LightTheme story
 export const LightTheme: Story = {
   parameters: {
     backgrounds: { default: 'Light Theme' },
@@ -36,7 +33,6 @@ export const LightTheme: Story = {
   },
 };
 
-// Define the DarkTheme story
 export const DarkTheme: Story = {
   parameters: {
     backgrounds: { default: 'Dark Theme' },

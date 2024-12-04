@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import {RichTextField} from '../../feature/input/rich-text-field/rich-text.component';
 
-// Metadata for the story
 const meta: Meta<typeof RichTextField> = {
   title: 'Input/RichTextField',
   component: RichTextField,
@@ -43,11 +42,8 @@ const meta: Meta<typeof RichTextField> = {
 };
 
 export default meta;
-
-// Define story type
 type Story = StoryObj<typeof RichTextField>;
 
-// Light Theme Story
 export const LightTheme: Story = {
   parameters: {
     backgrounds: { default: 'Light Theme' },
@@ -61,7 +57,6 @@ export const LightTheme: Story = {
   },
 };
 
-// Dark Theme Story
 export const DarkTheme: Story = {
   parameters: {
     backgrounds: { default: 'Dark Theme' },

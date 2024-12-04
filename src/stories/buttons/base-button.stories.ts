@@ -1,6 +1,9 @@
-import { StoryObj, Meta } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
-import { BaseButton, BaseButtonProps } from "../../feature/buttons/base-button/base-button.component";
+import { StoryObj, Meta } from "@storybook/react";
+import { useArgs } from "@storybook/preview-api";
+import {
+  BaseButton,
+  BaseButtonProps,
+} from "../../feature/buttons/base-button/base-button.component";
 
 const meta: Meta<typeof BaseButton> = {
   title: "Buttons/BaseButton",
@@ -56,12 +59,37 @@ const meta: Meta<typeof BaseButton> = {
 
 export default meta;
 type Story = StoryObj<typeof BaseButton>;
-export const Default: Story = {
+export const LightTheme: Story = {
   args: {
     size: "base",
     theme: "light-theme",
     disabled: false,
     isOwner: false,
     name: "add",
+  },
+};
+export const DarkTheme: Story = {
+  args: {
+    size: "base",
+    theme: "light-theme",
+    disabled: false,
+    isOwner: false,
+    name: "add",
+  },
+};
+LightTheme.parameters = {
+  backgrounds: { default: "Light Theme" },
+  docs: {
+    description: {
+      story: "This story demonstrates the light theme of the component.",
+    },
+  },
+};
+DarkTheme.parameters = {
+  backgrounds: { default: "Dark Theme" },
+  docs: {
+    description: {
+      story: "This story demonstrates the dark theme of the component.",
+    },
   },
 };
