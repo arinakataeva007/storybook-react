@@ -3,8 +3,8 @@ import "./label.style.scss";
 
 interface LabelComponentProps {
   label: string;
-  size: "base" | "mid" | "large" | "extra-large";
-  theme: "light-theme" | "dark-theme";
+  size?: "base" | "mid" | "large" | "extra-large";
+  theme?: "light-theme" | "dark-theme";
   iconPadding?: "left" | "right";
   isOwner?: boolean;
   disabled?: boolean;
@@ -15,9 +15,9 @@ interface LabelComponentProps {
 
 export const LabelComponent: React.FC<LabelComponentProps> = ({
   label,
-  size = "mid",
+  size = "base",
   theme = "light-theme",
-  iconPadding = "left",
+  iconPadding,
   isOwner = false,
   disabled = false,
   showIcon = true,

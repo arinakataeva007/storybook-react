@@ -11,7 +11,7 @@
 	fill: var(--state-disabled);
 }
 .symbol-size--base {
-	@include size-icon($iconSize-base);
+	@include size-icon($iconSize-Base);
 }
 .symbol-size--mid {
 	@include size-icon($iconSize-Mid);

@@ -7,6 +7,17 @@
 	display: flex;
 	align-items: center;
 	background: transparent;
+	&:has(.symbol-fill--light-theme):hover{
+		svg path{
+			fill: var(--state-active);
+		}
+	}
+	
+	&:has(.symbol-fill--dark-theme):hover{
+		svg path{
+			fill: var(--state-active--dark);
+		}
+	}
 	.symbol-rotate--up {
 		transform: rotate(0deg);
 	}
@@ -22,9 +33,6 @@
 	.symbol-fill--light-theme {
 		path {
 			fill: var(--text-base-text-default);
-		}
-		&:hover path{
-			fill: var(--state-active);
 		}
 	}
 	.symbol-fill--dark-theme {
@@ -44,7 +52,7 @@
 		fill: var(--state-disabled--dark);
 	}
 	.symbol-size--base {
-		@include size-icon($iconSize-base);
+		@include size-icon($iconSize-Base);
 	}
 	.symbol-size--mid {
 		@include size-icon($iconSize-Mid);

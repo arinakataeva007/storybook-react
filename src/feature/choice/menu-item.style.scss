@@ -9,11 +9,11 @@
 
   .footer-container {
     display: flex;
-    gap: $gapSize-base;
+    gap: $gapSize-Base;
   }
 
   .collapse-btn {
-    @include size-icon($iconSize-base);
+    @include size-icon($iconSize-Base);
     background: transparent;
     border: none;
     box-sizing: border-box;
@@ -37,7 +37,7 @@
 
   &:hover {
     background: var(--background-bg-2);
-    border-radius: $borderRadius-base;
+    border-radius: $borderRadius-Base;
   }
 
   &:focus {
@@ -61,16 +61,8 @@
     }
   }
 
-  &.disabled-light-theme {
+  &.menu-item-disabled-light-theme {
     pointer-events: none;
-
-    .hint {
-      color: var(--state-disabled);
-
-      & * {
-        color: var(--state-disabled);
-      }
-    }
 
     & * {
       color: var(--state-disabled);
@@ -78,7 +70,7 @@
     }
   }
 
-  &-dark-theme {
+  &.menu-item-dark-theme {
     .hint {
       text-align: right;
       color: var(--text-secondary-text-default--dark);
@@ -87,10 +79,16 @@
         color: var(--text-secondary-text-default--dark);
       }
     }
-
+    &.menu-item-disabled-dark-theme{
+      pointer-events: none;
+      & * {
+        color: var(--state-disabled);
+        fill: var(--state-disabled);
+      }
+    }
     &:hover {
       background: var(--background-bg-2--dark);
-      border-radius: $borderRadius-base;
+      border-radius: $borderRadius-Base;
     }
 
     &:focus {
@@ -117,8 +115,11 @@
     &.disabled-dark-theme {
       pointer-events: none;
 
-      .hint {
-        color: var(--state-disabled--dark);
+      .footer-container {
+        .label-container{
+          color: var(--state-disabled--dark);
+        }
+        
 
         & * {
           color: var(--state-disabled--dark);

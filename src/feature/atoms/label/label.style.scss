@@ -10,7 +10,7 @@ section {
 	&:hover {
 		color: var(--text-base-text-default);
 		background: var(--background-bg-2);
-		border-radius: $borderRadius-base;
+		border-radius: $borderRadius-Base;
 	}
 	.label-container {
 		display: inline;
@@ -35,13 +35,13 @@ section {
 .label--size--base {
 	height: 24px;
 	.label-container {
-		@include font-base(14px, $iconSize-base);
+		@include font-base(14px, $iconSize-Base);
 	}
 	.symbol-padding--left {
-		padding-left: $iconSize-base;
+		padding-left: $iconSize-Base;
 	}
 	.symbol-padding--right {
-		padding-right: $iconSize-base;
+		padding-right: $iconSize-Base;
 	}
 }
 .label--size--mid {
@@ -85,7 +85,7 @@ section {
 	&:hover {
 		color: var(--text-base-text-default);
 		background: var(--background-bg-2);
-		border-radius: $borderRadius-base;
+		border-radius: $borderRadius-Base;
 	}
 }
 .label--theme--dark-theme {
@@ -93,7 +93,7 @@ section {
 	&:hover {
 		color: var(--text-tertiary-text-default);
 		background: var(--background-bg-2--dark);
-		border-radius: $borderRadius-base;
+		border-radius: $borderRadius-Base;
 	}
 }
 .label-with-owner {

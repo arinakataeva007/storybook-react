@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import CollapseIcon from "../../feature/icons/collapse-icon/collapse-icon.component";
-import PopUp from "../../feature/floating/pop-up.component";
+import PopUp from "../floating/pop-up/pop-up.component";
 import Label from "../../feature/atoms/label/label.component";
-import './menu-item.style.scss';
+import "./menu-item.style.scss";
+
 interface MenuItemProps {
   isOwner?: boolean;
   hint?: string;
@@ -16,6 +17,9 @@ interface MenuItemProps {
   showIcon?: boolean;
   showText?: boolean;
   activeState?: (state: boolean) => void;
+  childrenIcon?: React.ReactNode;
+  childrenPopUp?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -31,9 +35,12 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   showIcon = true,
   showText = true,
   activeState,
+  childrenIcon,
+  childrenPopUp,
 }) => {
   const [active, setActive] = useState(isActive);
   const menuItemRef = useRef<HTMLDivElement | null>(null);
+  const popUp = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -49,6 +56,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if(popUp.current && menuItemRef.current){
+      popUp.current.style.zIndex = '100';
+      popUp.current.style.position = 'fixed';
+      popUp.current.style.top = `${menuItemRef.current.getBoundingClientRect().top}px`;
+      popUp.current.style.left = `${menuItemRef.current.getBoundingClientRect().width}px`;
+    }
+  }, [active]);
 
   const closeDropdown = () => {
     if (activeState) activeState(active);
@@ -81,7 +97,16 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         label={label}
         theme={theme}
       >
-        <div>{/* Any additional content can go here */}</div>
+        {showIcon && (
+          <div data-position="prev-icon">
+            {React.Children.map(childrenIcon, (child) =>
+              React.isValidElement(child) &&
+              child.props["data-position"] === "prev-icon"
+                ? child
+                : null
+            )}
+          </div>
+        )}
       </Label>
 
       <div className="footer-container">
@@ -96,10 +121,10 @@ export const MenuItem: React.FC<MenuItemProps> = ({
           />
         )}
         {showCollapseIcon && (
-          <button
+          <div
             className="collapse-btn"
-            onMouseEnter={openPopUp}
-            disabled={disabled}
+            onMouseMove={openPopUp}
+            onMouseLeave={closeDropdown}
           >
             <CollapseIcon
               disabled={disabled}
@@ -109,18 +134,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({
               isFill={false}
               fill={""}
             />
-          </button>
+          </div>
         )}
       </div>
-
-      {active && showCollapseIcon && (
-        <PopUp
-          theme={theme}
-          isModal={false}
-          scroll={popUpScroll}
-          children={undefined}
-        >
-        </PopUp>
+      {showCollapseIcon && active && (
+        <div ref={popUp} className="popUp-menu-container">
+          <PopUp theme={theme} isModal={false} scroll={popUpScroll}>
+            {childrenPopUp}
+          </PopUp>
+        </div>
       )}
     </section>
   );

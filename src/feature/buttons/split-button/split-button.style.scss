@@ -74,7 +74,7 @@
 	height: 24px;
 	::ng-deep {
 		svg {
-			@include size-icon($iconSize-base);
+			@include size-icon($iconSize-Base);
 		}
 	}
 }

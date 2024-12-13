@@ -9,9 +9,9 @@
 		padding: 0;
 		margin: 0;
 		display: block;
-		padding: $paddingSize-base;
+		padding: $paddingSize-Base;
 		width: $iconSize-Large;
-		height: $iconSize-base;
+		height: $iconSize-Base;
 		border-radius: 52px;
 		background: var(--component-component-tertiary);
 		transition: 240ms;
@@ -21,7 +21,7 @@
 			top: 0;
 			left: 0;
 			display: block;
-			@include size-icon($iconSize-base);
+			@include size-icon($iconSize-Base);
 			border-radius: $borderRadius-Mid;
 			background-color: var(--component-component-base);
 			transition: 240ms;

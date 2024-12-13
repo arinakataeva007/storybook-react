@@ -26,7 +26,7 @@
 
   &:focus {
     outline: none;
-    border-radius: $borderRadius-base;
+    border-radius: $borderRadius-Base;
     outline: 1px solid var(--state-active);
   }
 }
@@ -47,7 +47,7 @@
 
   &:focus {
     outline: none;
-    border-radius: $borderRadius-base;
+    border-radius: $borderRadius-Base;
     outline: 1px solid var(--state-active--dark);
   }
 }

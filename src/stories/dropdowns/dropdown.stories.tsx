@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Dropdown } from '../../feature/dropdown/dropdown.component';
-import { BaseButton } from '../../feature/buttons/base-button/base-button.component';
 import { MenuItem } from '../../feature/choice/menu-item.component';
-import { PopUp } from '../../feature/floating/pop-up.component';
 import React from 'react';
 
 const meta: Meta = {
@@ -41,7 +39,6 @@ const meta: Meta = {
       {...args}
       label="Label"
     >
-      <BaseButton disabled={args.disabled} theme={args.theme} size="base" name="add" />
       <MenuItem
         isActive={args.label === 'Option1'}
         label="Option1"
@@ -104,7 +101,6 @@ export const LightTheme: Story = {
     label: 'Label',
     theme: 'light-theme',
     collapsePlacement: 'right',
-    showIcon: true,
     showText: true,
     disabled: false,
   },
@@ -117,7 +113,6 @@ export const DarkTheme: Story = {
   args: {
     label: 'Label',
     theme: 'dark-theme',
-    showIcon: true,
     showText: true,
     collapsePlacement: 'right',
     disabled: false,

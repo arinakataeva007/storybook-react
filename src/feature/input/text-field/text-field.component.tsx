@@ -30,6 +30,7 @@ export const TextField: React.FC<TextFieldProps> = ({
   isValid = true,
 }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const hintRef = useRef<HTMLDivElement | null>(null);
   const [internalValue, setInternalValue] = useState(value);
 
   useEffect(() => {
@@ -67,9 +68,10 @@ export const TextField: React.FC<TextFieldProps> = ({
   }, [isValid]);
 
   useEffect(() => {
-    if (showHint && inputRef.current && hint) {
-      const hintWidth = inputRef.current.offsetWidth;
-      inputRef.current.style.paddingRight = `${hintWidth}px`;
+    if (showHint && hintRef.current && hint && inputRef.current) {
+      const hintWidth = hintRef.current.getBoundingClientRect().width;
+      console.log(hintWidth);
+      inputRef.current.style.paddingRight = `${Math.round(hintWidth)}px`;
     }
   }, [showHint, hint]);
 
@@ -86,14 +88,13 @@ export const TextField: React.FC<TextFieldProps> = ({
         className={`input--${disabled ? "disabled" : "enabled"} ${theme}`}
       />
       {showHint && hint && (
-        <div id="hint-container">
+        <div id="hint-container" ref={hintRef}>
           <LabelComponent
             isOwner={true}
             label={hint}
             size={"base"}
             theme={theme}
           >
-            <span className="hint">{hint}</span>
           </LabelComponent>
         </div>
       )}

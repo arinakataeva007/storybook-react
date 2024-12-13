@@ -9,6 +9,7 @@ export interface BaseButtonProps extends SizeProps, ThemeProps{
 
 export class BaseButton extends Component<BaseButtonProps> {
   private baseBtnEl: React.RefObject<HTMLButtonElement>;
+  
 
   constructor(props: BaseButtonProps) {
     super(props);
@@ -47,7 +48,7 @@ export class BaseButton extends Component<BaseButtonProps> {
 
   renderIcon() {
     const { name } = this.props;
-
+	
     if (name === 'app') {
       return (
         <svg
@@ -233,7 +234,7 @@ export class BaseButton extends Component<BaseButtonProps> {
 				height="16"
 				viewBox="0 0 16 16"
 				fill="none">
-				<g clip-path="url(#clip0_38_8304)">
+				<g clipPath="url(#clip0_38_8304)">
 					<mask
 						id="mask0_38_8304"
 						style={{ maskType: 'alpha' }}
@@ -362,7 +363,7 @@ export class BaseButton extends Component<BaseButtonProps> {
 				height="16"
 				viewBox="0 0 16 16"
 				fill="none">
-				<g clip-path="url(#clip0_38_8462)">
+				<g clipPath="url(#clip0_38_8462)">
 					<mask
 						id="mask0_38_8462"
 						style={{ maskType: 'alpha' }}

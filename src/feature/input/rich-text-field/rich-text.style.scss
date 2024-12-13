@@ -4,11 +4,11 @@
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: $gapSize-base;
+	gap: $gapSize-Base;
 	.rich-text-field {
 		height: 100px;
 		resize: none;
-		padding: $paddingSize-base;
+		padding: $paddingSize-Base;
 		border-radius: $borderRadius-Mid;
 		border: 1px solid var(--component-component-secondary);
 		align-items: flex-start;

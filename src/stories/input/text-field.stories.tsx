@@ -15,11 +15,6 @@ const meta: Meta<typeof TextField> = {
       control: { type: 'radio' },
       table: { defaultValue: { summary: 'light-theme' } },
     },
-    type: {
-      options: ['text', 'password'],
-      control: { type: 'radio' },
-      table: { defaultValue: { summary: 'text' } },
-    },
     disabled: {
       control: { type: 'boolean' },
       table: { defaultValue: { summary: 'false' } },
@@ -43,11 +38,11 @@ const meta: Meta<typeof TextField> = {
     },
     onChange: {
       action: 'changed',
-      description: 'Fires when the input value changes',
+      description: 'Отправляет введенное в input значение после того, как он теряет фокус',
     },
     onInput: {
       action: 'input',
-      description: 'Fires on every key input',
+      description: 'Отправляет каждый введенный в input символ, сразу послее ввода',
     },
   },
   decorators: [
@@ -66,11 +61,11 @@ export const LightTheme: Story = {
   args: {
     placeholder: 'Placeholder',
     autofocus: true,
+    value: 'SomeValue',
     hint: 'hint',
     showHint: true,
     disabled: false,
     theme: 'light-theme',
-    type: 'text',
   },
 };
 
@@ -82,9 +77,9 @@ export const DarkTheme: Story = {
     placeholder: 'Placeholder',
     disabled: false,
     autofocus: true,
+    value: 'SomeValue',
     hint: 'hint',
     showHint: true,
     theme: 'dark-theme',
-    type: 'password',
   },
 };

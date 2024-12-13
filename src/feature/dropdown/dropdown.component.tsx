@@ -1,19 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import Label from "../atoms/label/label.component";
 import CollapseIcon from "../../feature/icons/collapse-icon/collapse-icon.component";
-import PopUp from "../../feature/floating/pop-up.component";
+import PopUp from "../floating/pop-up/pop-up.component";
 import "./dropdown.styles.scss";
 
-interface DropdownProps {
+interface DropdownProps  {
   popUpScroll?: boolean;
   collapsePlacement?: "left" | "right";
   theme?: "light-theme" | "dark-theme";
   label?: string;
-  showIcon?: boolean;
   showText?: boolean;
   disabled?: boolean;
   onActiveStateChange?: (isOpen: boolean) => void;
-  children: React.ReactNode;
+  children?:  React.ReactNode;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -21,14 +20,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
   collapsePlacement = "right",
   theme = "light-theme",
   label = "",
-  showIcon = false,
   showText = false,
   disabled = false,
   onActiveStateChange = () => {},
-  children,
+  children
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const popUpRef = useRef<HTMLDivElement | null>(null);
 
   const handleDocumentClick = (event: MouseEvent) => {
     if (
@@ -59,15 +58,28 @@ export const Dropdown: React.FC<DropdownProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (popUpRef.current && isOpen) {
+      popUpRef.current.style.position = "fixed";
+      popUpRef.current.style.zIndex = "100";
+      popUpRef.current.style.left = `${
+        dropdownRef.current?.getBoundingClientRect().left
+      }px`;
+      popUpRef.current.style.top = `${
+        dropdownRef.current?.getBoundingClientRect().bottom
+      }px`;
+    }
+  }, [isOpen]);
+
   const getClasses = () => {
     if (disabled) {
-      return [`menu-item-disabled-${theme}`];
+      return ['dropdown-disabled', `dropdown-${theme}`];
     }
-    return [`menu-item-${theme}`];
+    return [`dropdown-${theme}`];
   };
 
   return (
-    <div
+    <section
       ref={dropdownRef}
       tabIndex={0}
       className={`dropdown-container ${getClasses().join(" ")}`}
@@ -75,52 +87,46 @@ export const Dropdown: React.FC<DropdownProps> = ({
     >
       {collapsePlacement === "left" && (
         <div className="footer-container">
-          <button className="collapse-btn" disabled={disabled}>
-            <CollapseIcon
-              disabled={disabled}
-              size="base"
-              theme={theme}
-              rotate="down"
-            />
-          </button>
+          <CollapseIcon
+            disabled={disabled}
+            size="base"
+            theme={theme}
+            rotate="down"
+          />
         </div>
       )}
-
-      <Label
-        isOwner
-        disabled={disabled}
-        showIcon={showIcon}
-        showText={showText}
-        size="base"
-        label={label}
-        theme={theme}
-      >
-        {children}
-      </Label>
+      <div className="label-dropdown">
+        <Label
+          isOwner={true}
+          disabled={disabled}
+          showIcon={false}
+          showText={showText}
+          size="base"
+          label={label}
+          theme={theme}
+        >
+        </Label>
+      </div>
 
       {collapsePlacement === "right" && (
         <div className="footer-container">
-          <button className="collapse-btn" disabled={disabled}>
-            <CollapseIcon
-              disabled={disabled}
-              size="base"
-              theme={theme}
-              rotate="down"
-            />
-          </button>
+          <CollapseIcon
+            disabled={disabled}
+            size="base"
+            theme={theme}
+            rotate="down"
+          />
         </div>
       )}
 
       {isOpen && (
-        <PopUp
-          theme={theme}
-          isModal={false}
-          scroll={popUpScroll}
-        >
-          <div onMouseLeave={hideDropdown}>{children}</div>
-        </PopUp>
+        <div ref={popUpRef} className="popUp-dropdown-container">
+          <PopUp theme={theme} isModal={false} scroll={popUpScroll}>
+            <div onMouseLeave={hideDropdown}>{children}</div>
+          </PopUp>
+        </div>
       )}
-    </div>
+    </section>
   );
 };
 

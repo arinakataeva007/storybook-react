@@ -6,20 +6,16 @@ interface CheckBoxProps {
   rlValue: boolean;
   disabled?: boolean;
   onChange?: (value: boolean) => void;
-  onTouched?: () => void;
-  theme?: string;
-  sendState?: (value: boolean) => void;
+  theme?: 'light-theme'|'dark-theme';
 }
 
-const CheckBox: React.FC<CheckBoxProps> = ({
+export const CheckBox: React.FC<CheckBoxProps> = ({
   checkboxId,
   isIndeterminate = false,
-  rlValue,
+  rlValue = false,
   disabled = false,
   onChange = () => {},
-  onTouched = () => {},
-  theme = 'default',
-  sendState = () => {},
+  theme = 'light-theme',
 }) => {
   const [value, setValue] = useState(rlValue);
   const [type, setType] = useState<'off' | 'on' | 'indeterminate'>('off');
@@ -46,7 +42,6 @@ const CheckBox: React.FC<CheckBoxProps> = ({
     const newValue = !value;
     setValue(newValue);
     onChange(newValue);
-    sendState(newValue);
   };
 
   const handleBlur = () => {
@@ -57,10 +52,6 @@ const CheckBox: React.FC<CheckBoxProps> = ({
 
   const getClasses = () => {
     return disabled ? [`check-box--disabled--${theme}`] : [`check-box--${theme}`];
-  };
-
-  const getClassForDefault = () => {
-    return disabled ? [`check-box--disabled--${theme}`] : [`check-box--off--${theme}`];
   };
 
   return (

@@ -7,7 +7,7 @@ export default {
   title: "Choice/MenuItem",
   component: MenuItem,
   subcomponents: { BaseButton },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "300px" }}>
@@ -25,12 +25,12 @@ export default {
       table: { defaultValue: { summary: "false" } },
     },
     showIcon: {
-      table: { defaultValue: { summary: "false" } },
+      table: { defaultValue: { summary: "true" } },
       description:
         "Атрибут можно не указывать, иконка всегда встает перед текстом",
     },
     showHint: {
-      table: { defaultValue: { summary: "false" } },
+      table: { defaultValue: { summary: "true" } },
     },
     showCollapseIcon: {
       table: { defaultValue: { summary: "true" } },
@@ -60,58 +60,31 @@ export default {
 } as Meta;
 
 const Template = (args) => (
-  <MenuItem {...args}>
-    {args.showIcon && (
+  <MenuItem
+    {...args}
+    childrenIcon={
       <BaseButton
+        data-position="prev-icon"
         theme={args.theme}
         name="plc"
         size="base"
         disabled={args.disabled}
       />
-    )}
-    {args.label}
-    {args.showCollapseIcon && (
+    }
+    childrenPopUp={
       <MenuItem
-        options
         theme={args.theme}
         label="Какая-то опция"
         hint="Ctrl + Shift + N"
         showIcon
-        {...args}
+        showCollapseIcon={false}
       >
-        {args.showIcon && (
-          <BaseButton
-            theme={args.theme}
-            name="plc"
-            size="base"
-            disabled={args.disabled}
-          />
-        )}
-        <MenuItem
-          options
-          theme={args.theme}
-          label="Последняя опция"
-          hint="Ctrl + Shift + N"
-          showIcon
-          showCollapseIcon={false}
-          {...args}
-        >
-          {args.showIcon && (
-            <BaseButton
-              theme={args.theme}
-              name="plc"
-              size="base"
-              disabled={args.disabled}
-            />
-          )}
-        </MenuItem>
       </MenuItem>
-    )}
-  </MenuItem>
+    }
+  ></MenuItem>
 );
 
 export const LightTheme = Template.bind({});
-
 LightTheme.args = {
   hint: "Ctrl + Shift + N",
   label: "Label",
@@ -125,6 +98,7 @@ LightTheme.args = {
   disabled: false,
   isOwner: false,
 };
+
 export const DarkTheme = Template.bind({});
 DarkTheme.args = {
   hint: "Ctrl + Shift + N",
@@ -139,14 +113,16 @@ DarkTheme.args = {
   disabled: false,
   isOwner: false,
 };
+
 LightTheme.parameters = {
-    backgrounds: { default: "Light Theme" },
-    docs: {
-      description: {
-        story: "This story demonstrates the light theme of the component.",
-      },
+  backgrounds: { default: "Light Theme" },
+  docs: {
+    description: {
+      story: "This story demonstrates the light theme of the component.",
     },
-  };
+  },
+};
+
 DarkTheme.parameters = {
   backgrounds: { default: "Dark Theme" },
   docs: {

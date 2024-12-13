@@ -75,7 +75,7 @@
     color: var(--text-text-inverse);
     fill: var(--text-text-inverse);
   }
-  border-radius: $borderRadius-base;
+  border-radius: $borderRadius-Base;
   background: var(--objects-button-default);
   @include button-state-light-theme(var(--state-active), var(--package-system-core), var(--text-text-inverse));
 }
@@ -106,7 +106,7 @@
 
 .button--secondary,
 .button--secondary--light-theme {
-  border-radius: $borderRadius-base;
+  border-radius: $borderRadius-Base;
   border: 1px solid var(--component-component-tertiary);
   background: transparent;
   @include button-state-dark-theme(

@@ -63,9 +63,9 @@
 }
 
 .symbol-size--base {
-  @include size-icon($iconSize-base);
+  @include size-icon($iconSize-Base);
   svg {
-    @include size-icon($iconSize-base);
+    @include size-icon($iconSize-Base);
   }
 }
 

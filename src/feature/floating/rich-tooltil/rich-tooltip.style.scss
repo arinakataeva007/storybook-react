@@ -1,0 +1,118 @@
+// @import '../../../assets/styles/styles.scss';
+// @mixin placement-pos($width, $height) {
+// 	width: $width;
+// 	height: $height;
+// 	box-sizing: border-box;
+// }
+// .rich-tooltip {
+// 	position: relative;
+//     .popUp-container {
+//         width: 100%;
+//         height: 100%;
+//         min-height: 100%;
+//     }
+		
+//     .tooltip-info {
+//         position: absolute;
+//         z-index: 10;
+//         padding-top: $paddingSize-Mid;
+//         padding-bottom: $paddingSize-Mid;
+//         padding-right: $paddingSize-Base;
+//         @include font-base(14px, 16px);
+//     }
+// 	}
+// 	rl-base-button {
+// 		position: absolute;
+// 		top: 4px;
+// 		right: 4px;
+// 		z-index: 100;
+// 	}
+// 	.rich-tooltip__tail {
+// 		width: 16px;
+// 		height: 16px;
+// 		position: absolute;
+// 		background: rgba(255, 255, 255, 1);
+// 	}
+// 	&.place-D {
+// 		@include placement-pos(200px, 112px);
+// 		.rich-tooltip__tail {
+// 			transform: rotate(45deg);
+// 			top: 103px;
+// 			left: 92px;
+// 			box-shadow: 3.5px 3.5px 4.5px 0px var(--Objects-ShadowDefault, #bcc2d2);
+// 		}
+// 	}
+// 	&.place-U {
+// 		@include placement-pos(200px, 112px);
+// 		.rich-tooltip__tail {
+// 			transform: rotate(45deg);
+// 			top: -8px;
+// 			left: 92px;
+// 			box-shadow: -2px -2px 3px 0px #dadde6;
+// 		}
+// 	}
+// 	&.place-R {
+// 		@include placement-pos(208px, 104px);
+// 		rl-pop-up {
+// 			::ng-deep {
+// 				.scroll-group {
+// 					border-radius: 8px;
+// 				}
+// 			}
+// 		}
+// 		.rich-tooltip__tail {
+// 			transform: rotate(45deg);
+// 			top: 44px;
+// 			left: 200px;
+// 			box-shadow: 4px -2px 3px 0px #dadde6;
+// 		}
+// 	}
+// 	&.place-L {
+// 		@include placement-pos(208px, 104px);
+// 		rl-pop-up {
+// 			::ng-deep {
+// 				.scroll-group {
+// 					border-radius: 8px;
+// 				}
+// 			}
+// 		}
+// 		.tooltip-info {
+// 			z-index: 3;
+// 		}
+// 		.rich-tooltip__tail {
+// 			transform: rotate(45deg);
+// 			top: 44px;
+// 			left: -8px;
+// 			box-shadow: -1px 2px 2px 0px #dddfe6;
+// 			z-index: 2;
+// 		}
+// 	}
+// 	&.tooltip-dark-theme {
+// 		&.place-D {
+// 			.rich-tooltip__tail {
+// 				box-shadow: 3.5px 3.5px 4.5px 0px var(--Objects-ShadowDefault, #30333e);
+// 			}
+// 		}
+// 		&.place-U {
+// 			.rich-tooltip__tail {
+// 				box-shadow: -2px -2px 3px 0px #444853;
+// 			}
+// 		}
+// 		&.place-R {
+// 			.rich-tooltip__tail {
+// 				box-shadow: 4px -2px 3px 0px #444853;
+// 			}
+// 		}
+// 		&.place-L {
+// 			.rich-tooltip__tail {
+// 				box-shadow: -1px 3px 3px 0px #444853;
+// 			}
+// 		}
+// 		.rich-tooltip__tail {
+// 			background: var(--brand-brand-Background--dark);
+// 		}
+// 		.tooltip-info {
+// 			color: var(--text-base-text-default--dark);
+// 		}
+// 	}
+// }
