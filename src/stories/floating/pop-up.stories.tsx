@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { PopUp } from '../../feature/floating/pop-up.component';
+import { PopUp } from '../../feature/floating/pop-up/pop-up.component';
 import { MenuItem } from '../../feature/choice/menu-item.component';
 
 const meta: Meta<typeof PopUp> = {

@@ -1,8 +1,6 @@
 import { StoryObj, Meta } from "@storybook/react";
-import { useArgs } from "@storybook/preview-api";
 import {
   BaseButton,
-  BaseButtonProps,
 } from "../../feature/buttons/base-button/base-button.component";
 
 const meta: Meta<typeof BaseButton> = {
@@ -36,21 +34,10 @@ const meta: Meta<typeof BaseButton> = {
       options: [
         "app",
         "app_fill",
-        "check-box_checked_fill",
-        "check-box_checked_line",
-        "check-box_indeterminate",
-        "check-box_unchecked",
         "plc",
         "circuit",
         "table",
-        "app_fill",
-        "workstation",
-        "BDE-selection",
-        "BDE-template",
-        "action",
         "add",
-        "add-circle",
-        "add-item",
       ],
       control: { type: "select" },
     },
