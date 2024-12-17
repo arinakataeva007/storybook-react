@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, forwardRef } from 'react';
 import './scroll-group.style.scss';
 
-// Define the props for the ScrollGroup component
 interface ScrollGroupProps {
   orientation?: 'vertical' | 'horizontal';
   theme: string;

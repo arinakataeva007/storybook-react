@@ -4,7 +4,7 @@ import './slider.style.scss';
 interface SliderComponentProps {
   theme: string;
   disabled: boolean;
-  onSendProgress?: (value: string) => void; // Сделать этот пропс необязательным
+  onSendProgress?: (value: string) => void; 
 }
 
 export class SliderComponent extends Component<SliderComponentProps> {

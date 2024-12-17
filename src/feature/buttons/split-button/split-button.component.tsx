@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './split-button.style.scss';
 
 interface SplitButtonSegmentProps {
@@ -9,42 +9,32 @@ interface SplitButtonSegmentProps {
   children?: ReactNode;
 }
 
-class SplitButtonSegment extends Component<SplitButtonSegmentProps> {
-  static defaultProps = {
-    size: 'base',
-    disabled: false,
-  };
-
-  constructor(props: SplitButtonSegmentProps) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  classes() {
-    const { size, theme } = this.props;
-    return [`split-button--size--${size}`, `split-button--${theme}`].join(' ');
-  }
-
-  handleClick(event: React.MouseEvent<HTMLButtonElement>) {
-    const { onSendState } = this.props;
+const SplitButtonSegment: React.FC<SplitButtonSegmentProps> = ({
+  size = 'base',
+  theme,
+  onSendState,
+  disabled = false,
+  children,
+}) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (onSendState) {
       onSendState(event);
     }
-  }
+  };
 
-  render() {
-    const { children, disabled } = this.props;
+  const classes = () => {
+    return [`split-button--size--${size}`, `split-button--${theme}`].join(' ');
+  };
 
-    return (
-      <button
-        onClick={this.handleClick}
-        className={`split-btn ${this.classes()}`}
-        disabled={disabled}
-      >
-        {children}
-      </button>
-    );
-  }
-}
+  return (
+    <button
+      onClick={handleClick}
+      className={`split-btn ${classes()}`}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
+};
 
 export default SplitButtonSegment;
