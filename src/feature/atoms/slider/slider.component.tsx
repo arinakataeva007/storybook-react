@@ -1,69 +1,58 @@
-import React, { Component } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './slider.style.scss';
 
 interface SliderComponentProps {
   theme: string;
   disabled: boolean;
-  onSendProgress?: (value: string) => void; 
+  onSendProgress?: (value: string) => void;
 }
 
-export class SliderComponent extends Component<SliderComponentProps> {
-  private scrollbarRef: React.RefObject<HTMLInputElement>;
-  private scrollTrackRef: React.RefObject<HTMLDivElement>;
+export const SliderComponent: React.FC<SliderComponentProps> = ({
+  theme,
+  disabled,
+  onSendProgress,
+}) => {
+  const scrollbarRef = useRef<HTMLInputElement>(null);
+  const scrollTrackRef = useRef<HTMLDivElement>(null);
+  const [trackWidth, setTrackWidth] = useState('0%');
 
-  constructor(props: SliderComponentProps) {
-    super(props);
-    this.scrollbarRef = React.createRef<HTMLInputElement>();
-    this.scrollTrackRef = React.createRef<HTMLDivElement>();
+  useEffect(() => {
+    updateScrollTrack();
+  }, []);
 
-    this.onInput = this.onInput.bind(this);
-  }
-
-  componentDidMount() {
-    this.updateScrollTrack();
-  }
-
-  updateScrollTrack() {
-    const { onSendProgress } = this.props;
-
-    if (this.scrollTrackRef.current && this.scrollbarRef.current) {
-      const value = this.scrollbarRef.current.value;
-      this.scrollTrackRef.current.style.width = value + '%';
-      (onSendProgress || (() => {}))(value);
+  const updateScrollTrack = () => {
+    if (scrollbarRef.current && scrollTrackRef.current) {
+      const value = scrollbarRef.current.value;
+      setTrackWidth(`${value}%`);
+      if(onSendProgress){
+        (onSendProgress) (value);
+      }
     }
-  }
+  };
 
-  onInput() {
-    const { onSendProgress } = this.props;
+  const onInput = () => {
+    updateScrollTrack();
+  };
 
-    if (this.scrollTrackRef.current && this.scrollbarRef.current) {
-      const value = this.scrollbarRef.current.value;
-      this.scrollTrackRef.current.style.width = `${value}%`;
-      (onSendProgress || (() => {}))(value); 
-    }
-  }
 
-  render() {
-    const { theme, disabled } = this.props;
+  const classes = disabled
+    ? `slider--${theme} slider--disabled--${theme}`
+    : `slider--${theme}`;
 
-    const classes = disabled
-      ? `slider--${theme} slider--disabled--${theme}`
-      : `slider--${theme}`;
 
-    return (
-      <div className={`slider-container ${classes}`}>
-        <input
-          ref={this.scrollbarRef}
-          onInput={this.onInput}
-          disabled={disabled}
-          type="range"
-          className="slider"
-          id="myRange"
-        />
-        <div ref={this.scrollTrackRef} className="scroll-div"></div>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`slider-container ${classes}`}>
+      <input
+        ref={scrollbarRef}
+        onInput={onInput}
+        disabled={disabled}
+        type="range"
+        className="slider"
+        id="myRange"
+      />
+      <div ref={scrollTrackRef} className="scroll-div" style={{ width: trackWidth }} />
+    </div>
+  );
+};
 
 export default SliderComponent;

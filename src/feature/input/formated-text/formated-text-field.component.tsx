@@ -39,7 +39,7 @@ export const FormatedTextField: React.FC<FormatedTextProps> = ({
   }, [rlValue]);
 
   const replaceSymbol = (event: any) => {
-    onInputs = true;
+    setOnInputs(onInputs = true);
     setValue((value = event.target.value));
     const index = event.target.value.length - 1;
     if (fieldRef.current) {
@@ -55,15 +55,7 @@ export const FormatedTextField: React.FC<FormatedTextProps> = ({
       }
     }
   };
-  const onChangeInput = (event: any) => {
-    if (rlValue != "" && rlValue) {
-      constPlaceholder = "";
-    } else {
-      constPlaceholder = placeholder;
-    }
-    onInputs = false;
-  };
-
+  
   const closeTooltip = (event: any) => {
     setOpen((richIsOpen = !richIsOpen));
   };
@@ -77,7 +69,6 @@ export const FormatedTextField: React.FC<FormatedTextProps> = ({
         type="text"
         disabled={disabled}
         minLength={maxLength}
-        onChange={onChangeInput}
         onInput={replaceSymbol}
       ></input>
       <div ref={errorIcon} className="errorName">
@@ -94,7 +85,7 @@ export const FormatedTextField: React.FC<FormatedTextProps> = ({
             theme={theme}
             tailPlacement={"L"}
             textRich={textRich}
-            onHandleCloseClick={() => closeTooltip}
+            onHandleCloseClick={closeTooltip}
           ></RichTooltip>
         )}
       </div>

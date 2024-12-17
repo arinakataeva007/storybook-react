@@ -1,22 +1,16 @@
-import React, { useEffect, useRef, useState, forwardRef } from 'react';
+import React, { useRef, forwardRef } from 'react';
 import './scroll-group.style.scss';
 
 interface ScrollGroupProps {
   orientation?: 'vertical' | 'horizontal';
-  theme: string;
+  theme: 'light-theme'|'dark-theme';
   children: React.ReactNode;
 }
 
 const ScrollGroup = forwardRef<HTMLDivElement, ScrollGroupProps>(
   ({ orientation = 'vertical', theme, children }, ref) => {
-    const contentGroupRef = useRef<HTMLDivElement>(null);
-    const [fullHeightContent, setFullHeightContent] = useState(0);
 
-    useEffect(() => {
-      if (contentGroupRef.current) {
-        setFullHeightContent(contentGroupRef.current.scrollHeight);
-      }
-    }, [children]);
+    const contentGroupRef = useRef<HTMLDivElement>(null);
 
     const classes = [
       `scroll-group--${theme}`,

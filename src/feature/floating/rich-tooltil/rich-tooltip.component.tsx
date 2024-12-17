@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import PopUp from "../pop-up/pop-up.component";
 import BaseButton from "../../buttons/base-button/base-button.component";
 import { ThemeProps } from "../../../shared/defaultProps";
@@ -6,7 +6,7 @@ import './rich-tooltip.style.scss';
 export interface RichTooltipProps extends ThemeProps {
   textRich: string;
   tailPlacement: "R" | "D" | "U" | "L";
-  onHandleCloseClick: (event: boolean) =>{};
+  onHandleCloseClick: MouseEventHandler;
 }
 export const RichTooltip: React.FC<RichTooltipProps> = ({
   theme = "light-theme",
@@ -17,9 +17,9 @@ export const RichTooltip: React.FC<RichTooltipProps> = ({
   const [text, setText] = useState(textRich);
   let [isClose, setClose] = useState(false);
 
-  const handleCloseClick = () =>{
+  const handleCloseClick: MouseEventHandler = (event) =>{
     if(onHandleCloseClick){
-      onHandleCloseClick(!isClose);
+      onHandleCloseClick(event);
     }
     setClose(isClose = !isClose);
   }

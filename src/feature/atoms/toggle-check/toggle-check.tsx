@@ -1,9 +1,9 @@
-import React, { ChangeEvent } from 'react';
+import React, { MouseEventHandler } from 'react';
 import './toggle-check.style.scss';
 interface ToggleCheckProps {
   toggleId: string;
   value: boolean;
-  onChange: (value: boolean) => void;
+  onChange?: MouseEventHandler<HTMLInputElement>;
   onBlur: () => void;
   disabled?: boolean;
   theme: string;
@@ -13,27 +13,26 @@ export const ToggleCheckComponent: React.FC<ToggleCheckProps> = ({
   toggleId,
   value,
   onChange,
-  onBlur,
   disabled = false,
   theme,
 }) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.checked);
-    onBlur();
-  };
 
   const toggleClass = disabled
     ? `toggle--${theme} toggle--disabled--${theme}`
     : `toggle--${theme}`;
 
+  const handleClick = (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    if(onChange){
+      onChange(event);
+    }
+  }
   return (
     <div className="toggle-check-container">
       <input
         id={toggleId}
         type="checkbox"
         checked={value}
-        onChange={handleChange}
-        onBlur={onBlur}
+        onClick={handleClick}
         disabled={disabled}
         className="toggle-check"
       />

@@ -1,7 +1,6 @@
-import React, { useState, forwardRef, useImperativeHandle } from 'react';
+import React, { useState } from 'react';
 import './rich-text.style.scss';
 
-// Определяем типы пропсов компонента
 interface RichTextFieldProps {
   placeholder?: string;
   hint?: string;
@@ -12,59 +11,42 @@ interface RichTextFieldProps {
   disabled?: boolean;
 }
 
-// Определяем интерфейс для рефа
-export interface RichTextFieldRef {
-  setValue: (newValue: string) => void;
-  getValue: () => string;
-}
+export const RichTextField: React.FC<RichTextFieldProps> = ({
+  placeholder = '',
+  hint = '',
+  showHint = false,
+  theme = '',
+  onInputChange,
+  onValueChange,
+  disabled = false,
+}) => {
+  const [value, setValue] = useState<string>('');
 
-export const RichTextField = forwardRef<RichTextFieldRef, RichTextFieldProps>(
-  (
-    {
-      placeholder = '',
-      hint = '',
-      showHint = false,
-      theme = '',
-      onInputChange,
-      onValueChange,
-      disabled = false,
-    },
-    ref
-  ) => {
-    const [value, setValue] = useState<string>('');
+  const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = event.target.value;
+    setValue(newValue);
+    if (onInputChange) onInputChange(newValue);
+  };
 
-    const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      const newValue = event.target.value;
-      setValue(newValue);
-      if (onInputChange) onInputChange(newValue);
-    };
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = event.target.value;
+    setValue(newValue);
+    if (onValueChange) onValueChange(newValue);
+  };
 
-    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      const newValue = event.target.value;
-      setValue(newValue);
-      if (onValueChange) onValueChange(newValue);
-    };
-
-    // Используем useImperativeHandle для предоставления методов рефа
-    useImperativeHandle(ref, () => ({
-      setValue: (newValue: string) => setValue(newValue),
-      getValue: () => value,
-    }));
-
-    return (
-      <div className='rich-text'>
-        <textarea
-          className={`rich-text-field ${theme === 'dark-theme' ? 'dark-theme' : ''}`}
-          placeholder={placeholder}
-          disabled={disabled}
-          value={value}
-          onInput={handleInput}
-          onChange={handleChange}
-        ></textarea>
-        {showHint && <div className="hint-container-rich">{hint}</div>}
-      </div>
-    );
-  }
-);
+  return (
+    <div className='rich-text'>
+      <textarea
+        className={`rich-text-field ${theme === 'dark-theme' ? 'dark-theme' : ''}`}
+        placeholder={placeholder}
+        disabled={disabled}
+        value={value}
+        onInput={handleInput}
+        onChange={handleChange}
+      ></textarea>
+      {showHint && <div className="hint-container-rich">{hint}</div>}
+    </div>
+  );
+};
 
 export default RichTextField;

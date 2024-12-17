@@ -27,7 +27,7 @@ const meta: Meta<typeof FormatedTextField> = {
     },
   },
   decorators: [
-    (Story) => <div style={{ width: '300px' }}>{Story()}</div>,
+    (Story) => <div style={{ width: '500px', padding: '40px' }}>{Story()}</div>,
   ],
   tags: ['autodocs'],
 };
