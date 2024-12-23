@@ -4,7 +4,7 @@ import "./pop-up.style.scss";
 interface PopUpProps {
   isModal?: boolean;
   scroll?: boolean;
-  theme: string;
+  theme: 'light-theme'|'dark-theme';
   children: React.ReactNode;
 }
 

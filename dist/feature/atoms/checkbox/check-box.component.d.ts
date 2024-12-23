@@ -6,9 +6,7 @@ interface CheckBoxProps {
     rlValue: boolean;
     disabled?: boolean;
     onChange?: (value: boolean) => void;
-    onTouched?: () => void;
-    theme?: string;
-    sendState?: (value: boolean) => void;
+    theme?: 'light-theme' | 'dark-theme';
 }
-declare const CheckBox: React.FC<CheckBoxProps>;
+export declare const CheckBox: React.FC<CheckBoxProps>;
 export default CheckBox;

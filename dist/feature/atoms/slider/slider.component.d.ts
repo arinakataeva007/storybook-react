@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './slider.style.scss';
 interface SliderComponentProps {
     theme: string;
     disabled: boolean;
-    onSendProgress: (value: string) => void;
+    onSendProgress?: (value: string) => void;
 }
-declare class SliderComponent extends Component<SliderComponentProps> {
-    private scrollbarRef;
-    private scrollTrackRef;
-    constructor(props: SliderComponentProps);
-    componentDidMount(): void;
-    updateScrollTrack(): void;
-    onInput(): void;
-    render(): React.JSX.Element;
-}
+export declare const SliderComponent: React.FC<SliderComponentProps>;
 export default SliderComponent;

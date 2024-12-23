@@ -75,7 +75,7 @@ const Template = (args) => (
       <MenuItem
         theme={args.theme}
         label="Какая-то опция"
-        hint="Ctrl + Shift + N"
+        hint={args.hint}
         showIcon
         showCollapseIcon={false}
       >

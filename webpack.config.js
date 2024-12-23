@@ -4,12 +4,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  mode: "production",
-  entry: "./src/index.ts",
+  mode: "production", //режим сборки(production оптимизирует код для размера и производительности)
+  entry: "./src/index.ts", //точка входа
   output: {
-    filename: "index.js",
-    libraryTarget: "umd",
-    path: path.resolve(__dirname, "dist"),
+    filename: "index.js", //файл точки после билдинга ts
+    libraryTarget: "umd", //создает универсальный модуль UMD для использования проекта в других проектах
+    path: path.resolve(__dirname, "dist"), //куда билдим либу
     clean: true,
   },
   resolve: {
@@ -18,8 +18,8 @@ module.exports = {
   externals: {
     react: "react",
   },
-  module: {
-    rules: [
+  module: {  
+    rules: [ //правила обработки различных типов
       {
         test: /\.(ts|tsx)?$/,
         use: ["ts-loader"],

@@ -1,13 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import "./progress-bar.style.scss";
 interface ProgressBarProps {
     leftRectangleWidth: string;
-    theme: "light" | "dark";
+    theme: "light-theme" | "dark-theme";
 }
-export declare class ProgressBarComponent extends Component<ProgressBarProps> {
-    private leftRectangleRef;
-    constructor(props: ProgressBarProps);
-    componentDidUpdate(prevProps: ProgressBarProps): void;
-    render(): React.JSX.Element;
-}
+export declare const ProgressBarComponent: React.FC<ProgressBarProps>;
 export default ProgressBarComponent;

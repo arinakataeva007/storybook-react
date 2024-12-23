@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './split-button.style.scss';
 interface SplitButtonSegmentProps {
     size?: string;
@@ -7,14 +7,5 @@ interface SplitButtonSegmentProps {
     disabled?: boolean;
     children?: ReactNode;
 }
-declare class SplitButtonSegment extends Component<SplitButtonSegmentProps> {
-    static defaultProps: {
-        size: string;
-        disabled: boolean;
-    };
-    constructor(props: SplitButtonSegmentProps);
-    classes(): string;
-    handleClick(event: React.MouseEvent<HTMLButtonElement>): void;
-    render(): React.JSX.Element;
-}
+declare const SplitButtonSegment: React.FC<SplitButtonSegmentProps>;
 export default SplitButtonSegment;

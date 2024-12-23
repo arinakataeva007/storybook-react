@@ -56,3 +56,4 @@ export const RichTooltip: React.FC<RichTooltipProps> = ({
     </section>
   );
 };
+export default RichTooltip;

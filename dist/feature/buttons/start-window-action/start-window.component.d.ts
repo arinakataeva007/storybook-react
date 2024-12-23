@@ -1,4 +1,10 @@
 import React from 'react';
 import './start-window.style.scss';
-declare const StartWindowAction: ({ label, theme, disabled, onSendState }: any) => React.JSX.Element;
-export default StartWindowAction;
+interface StartWindowActionComponentProps {
+    label: string;
+    theme: 'light-theme' | 'dark-theme';
+    disabled?: boolean;
+    onStateChange: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
+export declare const StartWindowActionComponent: React.FC<StartWindowActionComponentProps>;
+export default StartWindowActionComponent;
